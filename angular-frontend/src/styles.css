@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #313133;
+}
+
+ul {
+  list-style: none;
+}
