@@ -1,65 +1,62 @@
-<header>
-  <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse">
-    <div class="position-sticky">
-      <div class="list-group list-group-flush mx-3 mt-4">
-        <a ariaCurrentWhenActive="page" class="list-group-item py-2">
-          <fa-icon [icon]="faChartLine" size="1x" class="me-3"></fa-icon>
-          Main dashboard
-        </a>
-        <a
-          routerLink="/add-maps"
-          routerLinkActive="activebutton"
-          ariaCurrentWhenActive="page"
-          class="list-group-item py-2"
-        >
-          <fa-icon [icon]="faPlusSquare" size="1x" class="me-3"></fa-icon>Add
-        </a>
-        <a ariaCurrentWhenActive="page" class="list-group-item py-2"
-          ><fa-icon [icon]="faSquare" size="1x" class="me-3"></fa-icon
-          >Something</a
-        >
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav-bar">
+  <div class="container-fluid">
+    <span class="navbar-brand">
+      <img
+        id="logo-img"
+        class="rounded-circle"
+        src="https://w7.pngwing.com/pngs/946/101/png-transparent-counter-strike-global-offensive-counter-strike-source-counter-strike-1-6-computer-icons-counter-strike-logo-video-game-silhouette-thumbnail.png"
+        alt="cs source logo"
+      />
+    </span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasDarkNavbar"
+      aria-controls="offcanvasDarkNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="offcanvas offcanvas-end text-bg-dark"
+      tabindex="-1"
+      id="offcanvasDarkNavbar"
+      aria-labelledby="offcanvasDarkNavbarLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+          Map tracker
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a
+              routerLink="#"
+              ariaCurrentWhenActive="page"
+              routerLinkActive="activebutton"
+              class="nav-link"
+              aria-current="page"
+              >Dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/add-maps"
+              routerLinkActive="activebutton"
+              ariaCurrentWhenActive="page"
+              class="nav-link mb-1"
+              >Add maps</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- Navbar -->
-  <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu"
-        aria-controls="sidebarMenu"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <fa-icon [icon]="faBars" size="1x" class=""></fa-icon>
-      </button>
-
-      <span class="navbar-brand">
-        <img
-          class="rounded-circle"
-          src="https://w7.pngwing.com/pngs/946/101/png-transparent-counter-strike-global-offensive-counter-strike-source-counter-strike-1-6-computer-icons-counter-strike-logo-video-game-silhouette-thumbnail.png"
-          height="50"
-          alt="cs source logo"
-          loading="lazy"
-        />
-      </span>
-
-      <ul class="navbar-nav ms-auto d-flex flex-row">
-        <li class="nav-item dropdown">
-          <a href="#">
-            <fa-icon
-              [icon]="faGithub"
-              size="2x"
-              class="me-3 github-icon"
-            ></fa-icon>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+  </div>
+</nav>
