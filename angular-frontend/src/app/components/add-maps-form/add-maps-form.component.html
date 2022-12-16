@@ -1,0 +1,94 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="form-floating mb-3">
+          <input
+            [ngStyle]="{ color: 'black' }"
+            type="text"
+            class="form-control"
+            id="map-name"
+            placeholder="map-name"
+            formControlName="mapName"
+          />
+          <label [ngStyle]="{ color: 'black' }" for="map-name">Map name</label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <div class="form-floating mb-3">
+          <input
+            [ngStyle]="{ color: 'black' }"
+            class="form-control"
+            type="text"
+            formControlName="mapStyle"
+            id="map-style"
+            placeholder="map-style"
+          />
+          <label [ngStyle]="{ color: 'black' }" for="map-style"
+            >Linear / stage</label
+          >
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-floating mb-3">
+          <input
+            [ngStyle]="{ color: 'black' }"
+            class="form-control"
+            type="number"
+            formControlName="mapTier"
+            id="map-tier"
+            placeholder="map-tier"
+          />
+          <label [ngStyle]="{ color: 'black' }" for="map-tier">Tier</label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-lg-8">
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            placeholder="map-notes"
+            id="map-notes"
+            formControlName="mapNotes"
+          ></textarea>
+          <label [ngStyle]="{ color: 'black' }" for="map-notes">Notes</label>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center mb-2">
+      <div class="col-lg-8">
+        <div id="checkbox" class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            formControlName="mapCompleted"
+            id="map-completed"
+          />
+          <label
+            class="form-check-label"
+            for="map-completed"
+            [ngStyle]="{ color: '#CED4DA' }"
+          >
+            Mark map as done
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div>
+          <input
+            class="btn btn-secondary"
+            type="submit"
+            value="Submit"
+            [disabled]="!userForm.valid"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
