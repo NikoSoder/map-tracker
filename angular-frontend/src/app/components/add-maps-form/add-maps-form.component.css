@@ -20,6 +20,11 @@ option {
   color: #e8f0fe;
 }
 
+.btn-form {
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  border-radius: 15px;
+}
+
 /* Remove input type=number arrows */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
