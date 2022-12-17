@@ -13,10 +13,10 @@ export class AddMapsFormComponent implements OnInit {
 
   userForm = new FormGroup({
     mapName: new FormControl('', Validators.required),
-    mapStyle: new FormControl('', Validators.required),
+    mapStyle: new FormControl('linear', Validators.required),
     mapTier: new FormControl('', Validators.required),
     mapNotes: new FormControl(''),
-    mapCompleted: new FormControl(false, Validators.required),
+    mapCompleted: new FormControl(false),
   });
 
   userSubmit() {
@@ -26,6 +26,12 @@ export class AddMapsFormComponent implements OnInit {
     //   console.log(res);
     // });
 
-    this.userForm.reset();
+    this.userForm.reset({
+      mapName: '',
+      mapStyle: 'linear',
+      mapTier: '',
+      mapNotes: '',
+      mapCompleted: false,
+    });
   }
 }
