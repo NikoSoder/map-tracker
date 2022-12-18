@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const rows = await conn.query("SELECT * from hello");
+    const rows = await conn.query(`SELECT * from ${process.env.TABLE_NAME}`);
     res.status(200).json(rows);
   } catch (err) {
     throw err;
@@ -34,16 +34,15 @@ app.get("/", async (req, res) => {
 
 // add to database
 app.post("/", async (req, res) => {
-  console.log(req.body);
   let conn;
   try {
     conn = await pool.getConnection();
-    const { name, age } = req.body;
+    const { name, type, tier, notes, completed } = req.body;
     const result = await conn.query(
-      "INSERT INTO hello(name,age) values (?, ?)",
-      [name, age]
+      `INSERT INTO ${process.env.TABLE_NAME}(map_name,map_type,map_tier,map_notes,map_completed) values (?,?,?,?,?)`,
+      [name, type, tier, notes, completed]
     );
-    console.log(result);
+
     // const test = JSON.stringify(result, (key, value) =>
     //   typeof value === "bigint" ? value.toString() + "n" : value
     // );
@@ -56,6 +55,6 @@ app.post("/", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Listening for requests on port ${process.env.PORT}`);
 });
