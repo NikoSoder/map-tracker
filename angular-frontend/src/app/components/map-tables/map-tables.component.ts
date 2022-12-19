@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Map } from 'src/app/types/map.interface';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-map-tables',
@@ -6,60 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./map-tables.component.css'],
 })
 export class MapTablesComponent implements OnInit {
-  // This is just for testing
-  // Delete later
-  testData = [
-    {
-      mapName: 'surf_something',
-      mapStyle: 'Linear',
-      mapTier: 2,
-      mapNotes: 'Map was really good',
-    },
-    {
-      mapName: 'surf_somethingelse',
-      mapStyle: 'Stage',
-      mapTier: 3,
-      mapNotes: 'This was hard',
-    },
-    {
-      mapName: 'surf_something',
-      mapStyle: 'Linear',
-      mapTier: 2,
-      mapNotes: 'Map was really good',
-    },
-    {
-      mapName: 'surf_somethingelse',
-      mapStyle: 'Stage',
-      mapTier: 3,
-      mapNotes: 'This was hard',
-    },
-    {
-      mapName: 'surf_something',
-      mapStyle: 'Linear',
-      mapTier: 2,
-      mapNotes: 'Map was really good',
-    },
-    {
-      mapName: 'surf_somethingelse',
-      mapStyle: 'Stage',
-      mapTier: 3,
-      mapNotes: 'This was hard',
-    },
-    {
-      mapName: 'surf_something',
-      mapStyle: 'Linear',
-      mapTier: 2,
-      mapNotes: 'Map was really good',
-    },
-    {
-      mapName: 'surf_somethingelse',
-      mapStyle: 'Stage',
-      mapTier: 3,
-      mapNotes: 'This was hard',
-    },
-  ];
+  userMaps: Map[] = [];
 
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
+      console.log('All user maps', maps);
+      this.userMaps = maps;
+    });
+  }
 }

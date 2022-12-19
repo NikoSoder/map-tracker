@@ -1,9 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Map } from 'src/app/types/map.interface';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  API_URL = 'http://localhost:3000/';
+
+  getAllMaps(): Observable<Map[]> {
+    return this.http.get<Map[]>(this.API_URL);
+  }
 }
