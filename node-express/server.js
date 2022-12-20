@@ -37,10 +37,10 @@ app.post("/", async (req, res) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const { name, type, tier, notes, completed } = req.body;
+    const { map_name, map_type, map_tier, map_notes, map_completed } = req.body;
     const result = await conn.query(
-      `INSERT INTO ${process.env.TABLE_NAME}(map_name,map_type,map_tier,map_notes,map_completed) values (?,?,?,?,?)`,
-      [name, type, tier, notes, completed]
+      `INSERT INTO ${process.env.TABLE_NAME} (map_name, map_type, map_tier, map_notes, map_completed) values (?,?,?,?,?)`,
+      [map_name, map_type, map_tier, map_notes, map_completed]
     );
 
     // const test = JSON.stringify(result, (key, value) =>
