@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+  <form [formGroup]="mapForm" (ngSubmit)="userSubmit()">
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="form-floating mb-3">
@@ -9,7 +9,7 @@
             class="form-control"
             id="map-name"
             placeholder="map-name"
-            formControlName="mapName"
+            formControlName="map_name"
           />
           <label [ngStyle]="{ color: 'black' }" for="map-name">Map name</label>
         </div>
@@ -19,7 +19,7 @@
       <div class="col-lg-4">
         <div class="form-floating mb-3">
           <select
-            formControlName="mapStyle"
+            formControlName="map_type"
             class="form-select"
             id="floatingSelect"
           >
@@ -37,7 +37,7 @@
             [ngStyle]="{ color: 'black' }"
             class="form-control"
             type="number"
-            formControlName="mapTier"
+            formControlName="map_tier"
             id="map-tier"
             placeholder="map-tier"
           />
@@ -52,7 +52,7 @@
             class="form-control"
             placeholder="map-notes"
             id="map-notes"
-            formControlName="mapNotes"
+            formControlName="map_notes"
           ></textarea>
           <label [ngStyle]="{ color: 'black' }" for="map-notes">Notes</label>
         </div>
@@ -64,7 +64,7 @@
           <input
             class="form-check-input"
             type="checkbox"
-            formControlName="mapCompleted"
+            formControlName="map_completed"
             id="map-completed"
           />
           <label
@@ -85,7 +85,7 @@
             class="btn btn-primary btn-form"
             type="submit"
             value="Submit"
-            [disabled]="!userForm.valid"
+            [disabled]="!mapForm.valid"
           />
         </div>
       </div>

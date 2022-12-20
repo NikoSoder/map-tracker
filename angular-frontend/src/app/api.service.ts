@@ -20,4 +20,8 @@ export class ApiService {
   getAllMaps(): Observable<Map[]> {
     return this.http.get<Map[]>(this.API_URL);
   }
+
+  createMap(data: any): Observable<Map> {
+    return this.http.post<Map>(this.API_URL, data, httpOptions);
+  }
 }
