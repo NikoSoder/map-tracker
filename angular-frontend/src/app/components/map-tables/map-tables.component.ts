@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
 import { ApiService } from 'src/app/api.service';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-map-tables',
@@ -10,6 +11,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 })
 export class MapTablesComponent implements OnInit {
   faTrash = faTrash;
+  faCheckCircle = faCheckCircle;
   userMaps: Map[] = [];
 
   constructor(private apiService: ApiService) {}
@@ -23,5 +25,9 @@ export class MapTablesComponent implements OnInit {
 
   onDelete(mapName: string) {
     console.log(mapName);
+  }
+
+  onCompleted(mapName: string) {
+    console.log('completed');
   }
 }
