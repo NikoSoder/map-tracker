@@ -11,6 +11,7 @@
             <th scope="col">Style</th>
             <th scope="col">Tier</th>
             <th scope="col">Notes</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody class="table-body">
@@ -19,6 +20,13 @@
             <td>{{ map.map_type }}</td>
             <td>{{ map.map_tier }}</td>
             <td>{{ map.map_notes }}</td>
+            <td class="text-center">
+              <fa-icon
+                (click)="onDelete(map.map_name)"
+                [ngStyle]="{ color: '#B8767A' }"
+                [icon]="faTrash"
+              ></fa-icon>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -34,6 +42,7 @@
             <th scope="col">Style</th>
             <th scope="col">Tier</th>
             <th scope="col">Notes</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody class="table-body">
@@ -42,6 +51,13 @@
             <td>{{ map.map_type }}</td>
             <td>{{ map.map_tier }}</td>
             <td>{{ map.map_notes }}</td>
+            <td class="text-center">
+              <fa-icon
+                (click)="onDelete(map.map_name)"
+                [ngStyle]="{ color: '#B8767A' }"
+                [icon]="faTrash"
+              ></fa-icon>
+            </td>
           </tr>
         </tbody>
       </table>

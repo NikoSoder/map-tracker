@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
 import { ApiService } from 'src/app/api.service';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-map-tables',
@@ -8,6 +9,7 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./map-tables.component.css'],
 })
 export class MapTablesComponent implements OnInit {
+  faTrash = faTrash;
   userMaps: Map[] = [];
 
   constructor(private apiService: ApiService) {}
@@ -17,5 +19,9 @@ export class MapTablesComponent implements OnInit {
       console.log('All user maps', maps);
       this.userMaps = maps;
     });
+  }
+
+  onDelete(mapName: string) {
+    console.log(mapName);
   }
 }
