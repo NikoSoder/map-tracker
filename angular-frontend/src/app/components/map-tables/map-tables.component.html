@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="userMaps.length; else noMaps">
   <div class="row">
     <div class="col-sm-12 col-lg-6">
       <h2 class="mb-4" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
@@ -70,3 +70,13 @@
     </div>
   </div>
 </div>
+
+<!-- If no maps -->
+<ng-template #noMaps>
+  <h2 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
+    No maps available
+  </h2>
+  <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+    You can add maps to your database in the Add maps page
+  </p>
+</ng-template>
