@@ -24,4 +24,8 @@ export class ApiService {
   createMap(data: any): Observable<Map> {
     return this.http.post<Map>(this.API_URL, data, httpOptions);
   }
+
+  deleteMap(name: string): Observable<{}> {
+    return this.http.delete(`${this.API_URL}${name}`);
+  }
 }

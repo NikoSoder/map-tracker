@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const rows = await conn.query(`SELECT * from ${process.env.TABLE_NAME}`);
+    const rows = await conn.query(`SELECT * FROM ${process.env.TABLE_NAME}`);
     res.status(200).json(rows);
   } catch (err) {
     throw err;
@@ -39,7 +39,7 @@ app.post("/", async (req, res) => {
     conn = await pool.getConnection();
     const { map_name, map_type, map_tier, map_notes, map_completed } = req.body;
     const result = await conn.query(
-      `INSERT INTO ${process.env.TABLE_NAME} (map_name, map_type, map_tier, map_notes, map_completed) values (?,?,?,?,?)`,
+      `INSERT INTO ${process.env.TABLE_NAME} (map_name, map_type, map_tier, map_notes, map_completed) VALUES (?,?,?,?,?)`,
       [map_name, map_type, map_tier, map_notes, map_completed]
     );
 
@@ -48,6 +48,24 @@ app.post("/", async (req, res) => {
     // );
 
     res.status(200).json({ message: "data inserted" });
+  } catch (e) {
+    res.status(400).send(e.message);
+  } finally {
+    if (conn) return conn.end();
+  }
+});
+
+app.delete("/:name", async (req, res) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const name = req.params.name;
+    const result = await conn.query(
+      `DELETE FROM ${process.env.TABLE_NAME} WHERE map_name=(?)`,
+      [name]
+    );
+
+    res.status(200).json({ message: "map deleted" });
   } catch (e) {
     res.status(400).send(e.message);
   } finally {
