@@ -24,7 +24,10 @@ export class MapTablesComponent implements OnInit {
   }
 
   onDelete(mapName: string) {
-    console.log(mapName);
+    this.apiService.deleteMap(mapName).subscribe(() => {
+      this.userMaps = this.userMaps.filter((map) => map.map_name !== mapName);
+      console.log('deleted map');
+    });
   }
 
   onCompleted(mapName: string) {
