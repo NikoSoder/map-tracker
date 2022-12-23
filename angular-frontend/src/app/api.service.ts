@@ -28,4 +28,8 @@ export class ApiService {
   deleteMap(name: string): Observable<{}> {
     return this.http.delete(`${this.API_URL}${name}`);
   }
+
+  updateProject(map: Map, name: string): Observable<{}> {
+    return this.http.put(`${this.API_URL}${name}`, map);
+  }
 }

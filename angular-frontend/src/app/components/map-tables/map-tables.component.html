@@ -53,7 +53,7 @@
             <td>{{ map.map_notes }}</td>
             <td class="text-center">
               <fa-icon
-                (click)="onCompleted(map.map_name)"
+                (click)="onCompleted(map, map.map_name)"
                 [ngStyle]="{ color: '#38B67B' }"
                 [icon]="faCheckCircle"
               ></fa-icon>
