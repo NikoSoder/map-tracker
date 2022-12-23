@@ -13,6 +13,8 @@ export class MapTablesComponent implements OnInit {
   faTrash = faTrash;
   faCheckCircle = faCheckCircle;
   userMaps: Map[] = [];
+  completedMaps: Map[] = [];
+  projectMaps: Map[] = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -20,13 +22,22 @@ export class MapTablesComponent implements OnInit {
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
       console.log('All user maps', maps);
       this.userMaps = maps;
+      this.completedMaps = maps.filter((map) => map.map_completed === 1);
+      this.projectMaps = maps.filter((map) => map.map_completed === 0);
     });
   }
 
-  onDelete(mapName: string) {
+  onDelete(mapName: string, isMapCompleted: number | boolean) {
     this.apiService.deleteMap(mapName).subscribe(() => {
-      this.userMaps = this.userMaps.filter((map) => map.map_name !== mapName);
-      console.log('deleted map');
+      if (isMapCompleted === 1) {
+        this.completedMaps = this.completedMaps.filter(
+          (map) => map.map_name !== mapName
+        );
+        return;
+      }
+      this.projectMaps = this.projectMaps.filter(
+        (map) => map.map_name !== mapName
+      );
     });
   }
 

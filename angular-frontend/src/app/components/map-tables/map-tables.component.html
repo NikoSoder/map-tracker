@@ -15,14 +15,14 @@
           </tr>
         </thead>
         <tbody class="table-body">
-          <tr *ngFor="let map of userMaps">
+          <tr *ngFor="let map of completedMaps">
             <td>{{ map.map_name }}</td>
             <td>{{ map.map_type }}</td>
             <td>{{ map.map_tier }}</td>
             <td>{{ map.map_notes }}</td>
             <td class="text-center">
               <fa-icon
-                (click)="onDelete(map.map_name)"
+                (click)="onDelete(map.map_name, map.map_completed)"
                 [ngStyle]="{ color: '#B8767A' }"
                 [icon]="faTrash"
               ></fa-icon>
@@ -46,7 +46,7 @@
           </tr>
         </thead>
         <tbody class="table-body">
-          <tr *ngFor="let map of userMaps">
+          <tr *ngFor="let map of projectMaps">
             <td>{{ map.map_name }}</td>
             <td>{{ map.map_type }}</td>
             <td>{{ map.map_tier }}</td>
@@ -59,7 +59,7 @@
               ></fa-icon>
               <fa-icon
                 class="ms-2"
-                (click)="onDelete(map.map_name)"
+                (click)="onDelete(map.map_name, map.map_completed)"
                 [ngStyle]="{ color: '#B8767A' }"
                 [icon]="faTrash"
               ></fa-icon>

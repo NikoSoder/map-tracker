@@ -4,5 +4,5 @@ export interface Map {
   map_type: string;
   map_tier: number;
   map_notes?: string;
-  map_completed: boolean;
+  map_completed: boolean | number;
 }
