@@ -73,6 +73,25 @@ app.delete("/:name", async (req, res) => {
   }
 });
 
+app.put("/:name", async (req, res) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const name = req.params.name;
+    const result = await conn.query(
+      `UPDATE ${process.env.TABLE_NAME} SET map_completed=1 
+      WHERE map_name=(?)`,
+      [name]
+    );
+
+    res.status(200).json({ message: "Project done!" });
+  } catch (e) {
+    res.status(400).send(e.message);
+  } finally {
+    if (conn) return conn.end();
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Listening for requests on port ${process.env.PORT}`);
 });

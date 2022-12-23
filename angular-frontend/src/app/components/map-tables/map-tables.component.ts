@@ -41,7 +41,16 @@ export class MapTablesComponent implements OnInit {
     });
   }
 
-  onCompleted(mapName: string) {
-    console.log('completed');
+  onCompleted(map: Map, mapName: string) {
+    this.apiService.updateProject(map, mapName).subscribe();
+
+    for (let i = 0; i < this.projectMaps.length; i++) {
+      if (this.projectMaps[i].map_name === mapName) {
+        const completedProject = this.projectMaps.splice(i, 1);
+        completedProject[0].map_completed = 1;
+        this.completedMaps.push(completedProject[0]);
+        break;
+      }
+    }
   }
 }
