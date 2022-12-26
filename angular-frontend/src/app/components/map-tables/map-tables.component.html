@@ -1,8 +1,14 @@
-<div class="container" *ngIf="userMaps.length; else noMaps">
+<div
+  *ngIf="completedMaps.length || projectMaps.length; else noMaps"
+  class="container"
+>
   <div class="row">
     <div class="col-sm-12 col-lg-6">
-      <h2 class="mb-4" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
+      <h2 class="mb-4 text-center" [ngStyle]="{ color: '#F3F4F6' }">
+        Completed maps
+      </h2>
       <table
+        *ngIf="completedMaps.length; else noCompleted"
         class="table table-dark table-striped table-hover table-bordered table-sm"
       >
         <thead class="table-secondary">
@@ -30,10 +36,22 @@
           </tr>
         </tbody>
       </table>
+      <ng-template #noCompleted>
+        <h4 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
+          No completed maps available
+        </h4>
+        <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+          You can add maps to your account in the Add maps page
+        </p>
+      </ng-template>
     </div>
+
     <div class="col-sm-12 col-lg-6">
-      <h2 class="mb-4" [ngStyle]="{ color: '#F3F4F6' }">Projects</h2>
+      <h2 class="mb-4 text-center" [ngStyle]="{ color: '#F3F4F6' }">
+        Projects
+      </h2>
       <table
+        *ngIf="projectMaps.length; else noProjects"
         class="table table-dark table-striped table-hover table-bordered table-sm"
       >
         <thead class="table-secondary">
@@ -67,16 +85,23 @@
           </tr>
         </tbody>
       </table>
+      <ng-template #noProjects>
+        <h4 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
+          No projects available
+        </h4>
+        <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+          You can add projects to your account in the Add maps page
+        </p>
+      </ng-template>
     </div>
   </div>
 </div>
 
-<!-- If no maps -->
 <ng-template #noMaps>
   <h2 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
     No maps available
   </h2>
   <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
-    You can add maps to your database in the Add maps page
+    You can add maps to your account in the Add maps page
   </p>
 </ng-template>
