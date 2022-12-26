@@ -22,7 +22,7 @@
             <td>{{ map.map_notes }}</td>
             <td class="text-center">
               <fa-icon
-                (click)="onDelete(map.map_name, map.map_completed)"
+                (click)="onDelete.emit(map)"
                 [ngStyle]="{ color: '#B8767A' }"
                 [icon]="faTrash"
               ></fa-icon>
@@ -53,13 +53,13 @@
             <td>{{ map.map_notes }}</td>
             <td class="text-center">
               <fa-icon
-                (click)="onCompleted(map, map.map_name)"
+                (click)="onCompleted.emit(map)"
                 [ngStyle]="{ color: '#38B67B' }"
                 [icon]="faCheckCircle"
               ></fa-icon>
               <fa-icon
                 class="ms-2"
-                (click)="onDelete(map.map_name, map.map_completed)"
+                (click)="onDelete.emit(map)"
                 [ngStyle]="{ color: '#B8767A' }"
                 [icon]="faTrash"
               ></fa-icon>

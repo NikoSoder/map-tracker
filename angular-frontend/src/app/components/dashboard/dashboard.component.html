@@ -1,2 +1,8 @@
 <!-- chart js stats component here? -->
-<app-map-tables></app-map-tables>
+<app-map-tables
+  [completedMaps]="completedMaps"
+  [projectMaps]="projectMaps"
+  [userMaps]="userMaps"
+  (onDelete)="onDelete($event)"
+  (onCompleted)="onCompleted($event)"
+></app-map-tables>
