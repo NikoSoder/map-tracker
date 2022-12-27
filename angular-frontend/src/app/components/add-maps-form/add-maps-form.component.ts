@@ -15,10 +15,13 @@ export class AddMapsFormComponent implements OnInit {
   ngOnInit(): void {}
 
   mapForm = new FormGroup({
-    map_name: new FormControl('', Validators.required),
+    map_name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
     map_type: new FormControl('linear', Validators.required),
-    map_tier: new FormControl('', Validators.required),
-    map_notes: new FormControl(''),
+    map_tier: new FormControl('', [Validators.required, Validators.max(8)]),
+    map_notes: new FormControl('', Validators.maxLength(20)),
     map_completed: new FormControl(false),
   });
 
