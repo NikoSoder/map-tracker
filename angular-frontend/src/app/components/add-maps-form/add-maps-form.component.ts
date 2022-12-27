@@ -9,22 +9,35 @@ import { Map } from 'src/app/types/map.interface';
   styleUrls: ['./add-maps-form.component.css'],
 })
 export class AddMapsFormComponent implements OnInit {
+  errormsg = '';
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
 
   mapForm = new FormGroup({
-    map_name: new FormControl('', Validators.required),
+    map_name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
     map_type: new FormControl('linear', Validators.required),
-    map_tier: new FormControl('', Validators.required),
-    map_notes: new FormControl(''),
+    map_tier: new FormControl('', [Validators.required, Validators.max(8)]),
+    map_notes: new FormControl('', Validators.maxLength(20)),
     map_completed: new FormControl(false),
   });
 
-  userSubmit() {
-    console.log(this.mapForm.value);
-    this.apiService.createMap(this.mapForm.value).subscribe((res) => {
-      console.log(res);
+  onSubmit() {
+    this.errormsg = '';
+    const form = this.mapForm.value;
+    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
+      maps = maps.filter((map) => map.map_name === form.map_name);
+
+      if (maps.length) {
+        this.errormsg = 'Map is already added';
+        return;
+      }
+      this.apiService.createMap(form).subscribe((res) => {
+        console.log(res);
+      });
     });
 
     this.mapForm.reset({

@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="mapForm" (ngSubmit)="userSubmit()">
+  <form [formGroup]="mapForm" (ngSubmit)="onSubmit()">
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="form-floating mb-3">
@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mb-3">
       <div class="col-lg-8">
         <div>
           <input
@@ -88,6 +88,11 @@
             [disabled]="!mapForm.valid"
           />
         </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div *ngIf="errormsg" class="col-lg-8">
+        <p class="error-message">{{ errormsg }}</p>
       </div>
     </div>
   </form>
