@@ -9,6 +9,7 @@ import { Map } from 'src/app/types/map.interface';
   styleUrls: ['./add-maps-form.component.css'],
 })
 export class AddMapsFormComponent implements OnInit {
+  errormsg = '';
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
@@ -21,10 +22,19 @@ export class AddMapsFormComponent implements OnInit {
     map_completed: new FormControl(false),
   });
 
-  userSubmit() {
-    console.log(this.mapForm.value);
-    this.apiService.createMap(this.mapForm.value).subscribe((res) => {
-      console.log(res);
+  onSubmit() {
+    this.errormsg = '';
+    const form = this.mapForm.value;
+    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
+      maps = maps.filter((map) => map.map_name === form.map_name);
+
+      if (maps.length) {
+        this.errormsg = 'Map is already added';
+        return;
+      }
+      this.apiService.createMap(form).subscribe((res) => {
+        console.log(res);
+      });
     });
 
     this.mapForm.reset({

@@ -25,6 +25,11 @@ option {
   border-radius: 15px;
 }
 
+.error-message {
+  display: inline-block;
+  color: #f3c1c4;
+}
+
 /* Remove input type=number arrows */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
