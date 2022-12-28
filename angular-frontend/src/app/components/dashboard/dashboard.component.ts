@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
+import { faTrash, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +9,18 @@ import { Map } from 'src/app/types/map.interface';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userMaps: Map[] = [];
+  allMaps: Map[] = [];
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
+  faTrash = faTrash;
+  faCheckCircle = faCheckCircle;
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
       console.log('All user maps', maps);
-      this.userMaps = maps;
+      this.allMaps = maps;
       this.completedMaps = maps.filter((map) => map.map_completed === 1);
       this.projectMaps = maps.filter((map) => map.map_completed === 0);
     });
