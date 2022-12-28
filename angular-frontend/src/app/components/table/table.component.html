@@ -1,0 +1,31 @@
+<table
+  class="table table-dark table-striped table-hover table-bordered table-sm"
+>
+  <thead class="table-secondary">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Style</th>
+      <th scope="col">Tier</th>
+      <th scope="col">Notes</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody class="table-body">
+    <tr *ngFor="let map of data">
+      <td>{{ map.map_name }}</td>
+      <td>{{ map.map_type }}</td>
+      <td>{{ map.map_tier }}</td>
+      <td>{{ map.map_notes }}</td>
+      <ng-container
+        *ngTemplateOutlet="
+          tableMethods || noTableMethods;
+          context: { $implicit: map }
+        "
+      ></ng-container>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noTableMethods>
+  <td></td>
+</ng-template>
