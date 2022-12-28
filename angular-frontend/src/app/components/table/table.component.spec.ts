@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapTablesComponent } from './map-tables.component';
+import { TableComponent } from './table.component';
 
-describe('MapTablesComponent', () => {
-  let component: MapTablesComponent;
-  let fixture: ComponentFixture<MapTablesComponent>;
+describe('TableComponent', () => {
+  let component: TableComponent;
+  let fixture: ComponentFixture<TableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MapTablesComponent ]
+      declarations: [ TableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MapTablesComponent);
+    fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

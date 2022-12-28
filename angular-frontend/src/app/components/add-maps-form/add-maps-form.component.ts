@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
+import { Map } from 'src/app/types/map.interface';
 
 @Component({
   selector: 'app-add-maps-form',
@@ -7,25 +9,43 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-maps-form.component.css'],
 })
 export class AddMapsFormComponent implements OnInit {
-  constructor() {}
+  errormsg = '';
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
 
-  userForm = new FormGroup({
-    mapName: new FormControl('', Validators.required),
-    mapStyle: new FormControl('', Validators.required),
-    mapTier: new FormControl('', Validators.required),
-    mapNotes: new FormControl(''),
-    mapCompleted: new FormControl(false, Validators.required),
+  mapForm = new FormGroup({
+    map_name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+    map_type: new FormControl('linear', Validators.required),
+    map_tier: new FormControl('', [Validators.required, Validators.max(8)]),
+    map_notes: new FormControl('', Validators.maxLength(20)),
+    map_completed: new FormControl(false),
   });
 
-  userSubmit() {
-    console.log(this.userForm.value);
+  onSubmit() {
+    this.errormsg = '';
+    const form = this.mapForm.value;
+    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
+      maps = maps.filter((map) => map.map_name === form.map_name);
 
-    // this.dataService.createData(this.userForm.value).subscribe((res) => {
-    //   console.log(res);
-    // });
+      if (maps.length) {
+        this.errormsg = 'Map is already added';
+        return;
+      }
+      this.apiService.createMap(form).subscribe((res) => {
+        console.log(res);
+      });
+    });
 
-    this.userForm.reset();
+    this.mapForm.reset({
+      map_name: '',
+      map_type: 'linear',
+      map_tier: '',
+      map_notes: '',
+      map_completed: false,
+    });
   }
 }
