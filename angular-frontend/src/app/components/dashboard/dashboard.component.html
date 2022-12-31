@@ -4,13 +4,10 @@
   class="container"
 >
   <div class="row justify-content-center">
-    <div class="col-sm-12 col-lg-6">
-      <h2 class="mb-4 text-center" [ngStyle]="{ color: '#F3F4F6' }">
-        Completed maps
-      </h2>
-      <app-search-bar (onSearch)="searchMapName($event)"></app-search-bar>
+    <div *ngIf="completedMaps.length" class="col-sm-12 col-lg-6">
+      <h2 class="mb-4" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
 
-      <app-table *ngIf="completedMaps.length" [data]="completedMaps">
+      <app-table [data]="completedMaps">
         <ng-template #tableMethods let-map>
           <td class="text-center">
             <fa-icon
@@ -23,9 +20,8 @@
       ></app-table>
     </div>
     <div *ngIf="projectMaps.length" class="col-sm-12 col-lg-6">
-      <h2 class="mb-4 text-center" [ngStyle]="{ color: '#F3F4F6' }">
-        Projects
-      </h2>
+      <h2 class="mb-4" [ngStyle]="{ color: '#F3F4F6' }">Projects</h2>
+
       <app-table [data]="projectMaps">
         <ng-template #tableMethods let-map>
           <td class="text-center">

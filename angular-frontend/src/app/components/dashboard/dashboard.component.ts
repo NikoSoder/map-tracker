@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   allMaps: Map[] = [];
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
+
   faTrash = faTrash;
   faCheckCircle = faCheckCircle;
 
@@ -50,16 +51,6 @@ export class DashboardComponent implements OnInit {
           break;
         }
       }
-    });
-  }
-
-  searchMapName(input: string) {
-    let filteredMaps: Map[] = [];
-    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
-      filteredMaps = maps.filter((map) => map.map_completed === 1);
-      this.completedMaps = filteredMaps.filter((map) =>
-        map.map_name.includes(input)
-      );
     });
   }
 }

@@ -15,8 +15,12 @@ import { Map } from 'src/app/types/map.interface';
 export class TableComponent implements OnInit {
   @Input() data!: Map[];
   @ContentChild('tableMethods') tableMethods!: TemplateRef<any>;
-
+  searchInput = '';
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSearch(input: string) {
+    this.searchInput = input;
+  }
 }

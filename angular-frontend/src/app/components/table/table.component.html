@@ -1,3 +1,5 @@
+<input class="mb-2" type="text" #input (keyup)="onSearch(input.value)" />
+
 <table
   class="table table-dark table-striped table-hover table-bordered table-sm"
 >
@@ -11,18 +13,20 @@
     </tr>
   </thead>
   <tbody class="table-body">
-    <tr *ngFor="let map of data">
-      <td>{{ map.map_name }}</td>
-      <td>{{ map.map_type }}</td>
-      <td>{{ map.map_tier }}</td>
-      <td>{{ map.map_notes }}</td>
-      <ng-container
-        *ngTemplateOutlet="
-          tableMethods || noTableMethods;
-          context: { $implicit: map }
-        "
-      ></ng-container>
-    </tr>
+    <ng-container *ngFor="let map of data">
+      <tr *ngIf="map.map_name.includes(searchInput)">
+        <td>{{ map.map_name }}</td>
+        <td>{{ map.map_type }}</td>
+        <td>{{ map.map_tier }}</td>
+        <td>{{ map.map_notes }}</td>
+        <ng-container
+          *ngTemplateOutlet="
+            tableMethods || noTableMethods;
+            context: { $implicit: map }
+          "
+        ></ng-container>
+      </tr>
+    </ng-container>
   </tbody>
 </table>
 
