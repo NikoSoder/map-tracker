@@ -1,4 +1,15 @@
-<input class="mb-2" type="text" #input (keyup)="onSearch(input.value)" />
+<div class="input-group w-50 mb-1">
+  <span class="input-group-text border-0">
+    <fa-icon [icon]="faSearch"></fa-icon>
+  </span>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search"
+    #input
+    (keyup)="onSearch(input.value)"
+  />
+</div>
 
 <table
   class="table table-dark table-striped table-hover table-bordered table-sm"
