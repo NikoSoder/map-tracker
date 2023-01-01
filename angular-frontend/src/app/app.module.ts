@@ -10,7 +10,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AddMapsFormComponent } from './components/add-maps-form/add-maps-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,6 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     AddMapsFormComponent,
     DashboardComponent,
     TableComponent,
-    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
