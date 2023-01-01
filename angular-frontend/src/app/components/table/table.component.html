@@ -1,14 +1,20 @@
 <div class="input-group w-50 mb-1">
-  <span class="input-group-text border-0">
-    <fa-icon [icon]="faSearch"></fa-icon>
+  <span class="input-group-text bg-dark bg-gradient">
+    <fa-icon [ngStyle]="{ color: '#fff' }" [icon]="faSearch"></fa-icon>
   </span>
   <input
     type="text"
-    class="form-control"
+    class="form-control bg-dark text-white"
     placeholder="Search"
     #input
     (keyup)="onSearch(input.value)"
+    list="datalistOptions"
   />
+  <datalist id="datalistOptions">
+    <ng-container *ngFor="let map of data">
+      <option value="{{ map.map_name }}"></option>
+    </ng-container>
+  </datalist>
 </div>
 
 <table
