@@ -6,6 +6,7 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-table',
@@ -15,8 +16,13 @@ import { Map } from 'src/app/types/map.interface';
 export class TableComponent implements OnInit {
   @Input() data!: Map[];
   @ContentChild('tableMethods') tableMethods!: TemplateRef<any>;
-
+  searchInput = '';
+  faSearch = faSearch;
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSearch(input: string) {
+    this.searchInput = input;
+  }
 }

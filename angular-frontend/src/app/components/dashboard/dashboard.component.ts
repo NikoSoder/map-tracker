@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   allMaps: Map[] = [];
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
+
   faTrash = faTrash;
   faCheckCircle = faCheckCircle;
 
