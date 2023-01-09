@@ -45,9 +45,9 @@ export class DashboardComponent implements OnInit {
     this.apiService.updateProject(userMap, userMap.map_name).subscribe(() => {
       for (let i = 0; i < this.projectMaps.length; i++) {
         if (this.projectMaps[i].map_name === userMap.map_name) {
-          const completedProject = this.projectMaps.splice(i, 1);
-          completedProject[0].map_completed = 1;
-          this.completedMaps.push(completedProject[0]);
+          const completedProject = this.projectMaps.splice(i, 1)[0];
+          completedProject.map_completed = 1;
+          this.completedMaps.push(completedProject);
           break;
         }
       }
