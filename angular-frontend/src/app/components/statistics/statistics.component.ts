@@ -6,7 +6,7 @@ import { Map } from 'src/app/types/map.interface';
 interface TiersHashmap {
   [key: string]: number;
 }
-interface Tier {
+interface TierInfo {
   tier: string;
   count: number;
 }
@@ -18,14 +18,31 @@ interface Tier {
 })
 export class StatisticsComponent implements OnInit {
   completedMaps: Map[] = [];
-  tierData?: Tier[];
+  tierData?: TierInfo[];
 
   constructor(private apiService: ApiService) {}
 
   // BAR CHART
   barChartData: any;
-  barChartOptions = {
+  barChartOptions: ChartConfiguration['options'] = {
     color: 'rgb(243, 244, 246)',
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'rgb(243, 244, 246)',
+        },
+      },
+      y: {
+        ticks: {
+          color: 'rgb(243, 244, 246)',
+        },
+      },
+    },
   };
 
   ngOnInit(): void {
@@ -59,7 +76,6 @@ export class StatisticsComponent implements OnInit {
       labels: this.tierData?.map((map) => map.tier),
       datasets: [
         {
-          label: 'Maps by tiers',
           data: this.tierData?.map((map) => map.count),
           backgroundColor: '#0d6efd',
           borderColor: 'none',
