@@ -45,6 +45,17 @@ export class StatisticsComponent implements OnInit {
     },
   };
 
+  // DOUGHNUT CHART
+  doughnutChartData: any;
+  doughnutChartOptions: ChartConfiguration['options'] = {
+    color: 'rgb(243, 244, 246)',
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
   ngOnInit(): void {
     this.getData();
   }
@@ -81,6 +92,20 @@ export class StatisticsComponent implements OnInit {
           borderColor: 'none',
           color: 'white',
           hoverBackgroundColor: '#0b5ed7',
+        },
+      ],
+    };
+
+    this.doughnutChartData = {
+      labels: this.tierData?.map((map) => map.tier),
+      datasets: [
+        {
+          data: this.tierData?.map((map) => map.count),
+          // backgroundColor: '#0d6efd',
+          // backgroundColor: ['white', 'white', 'white'],
+          borderColor: '#313133',
+          color: 'white',
+          // hoverBackgroundColor: ['green', 'red', 'black', 'white', 'yellow'],
         },
       ],
     };
