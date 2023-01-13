@@ -43,13 +43,13 @@ export class DashboardComponent implements OnInit {
 
   onCompleted(userMap: Map) {
     this.apiService.updateProject(userMap, userMap.map_name).subscribe(() => {
-      for (let i = 0; i < this.projectMaps.length; i++) {
-        if (this.projectMaps[i].map_name === userMap.map_name) {
-          const completedProject = this.projectMaps.splice(i, 1)[0];
-          completedProject.map_completed = 1;
-          this.completedMaps.push(completedProject);
-          break;
-        }
+      const index = this.projectMaps.findIndex(
+        (map) => map.map_name === userMap.map_name
+      );
+      if (index !== -1) {
+        const completedProject = this.projectMaps.splice(index, 1)[0];
+        completedProject.map_completed = 1;
+        this.completedMaps = this.completedMaps.concat(completedProject);
       }
     });
   }
