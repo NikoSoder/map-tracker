@@ -1,5 +1,12 @@
 <div class="container">
-  <h3 class="text-center mb-5" [ngStyle]="{ color: '#F3F4F6' }">
+  <div class="row justify-content-center mb-4">
+    <div class="col-sm-12 col-md-10 text-center info-container p-2">
+      <h3 [ngStyle]="{ color: '#F3F4F6' }">Statistics</h3>
+      <p>Total maps done: {{ completedMaps.length }}</p>
+      <p>Number of projects: {{ projectMaps.length }}</p>
+    </div>
+  </div>
+  <h3 class="text-center mb-3" [ngStyle]="{ color: '#F3F4F6' }">
     Completed maps by tiers
   </h3>
   <div class="row justify-content-center p-2">

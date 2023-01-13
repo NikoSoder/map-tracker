@@ -18,6 +18,7 @@ interface TierInfo {
 })
 export class StatisticsComponent implements OnInit {
   completedMaps: Map[] = [];
+  projectMaps: Map[] = [];
   tierData?: TierInfo[];
 
   constructor(private apiService: ApiService) {}
@@ -64,6 +65,7 @@ export class StatisticsComponent implements OnInit {
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
       console.log('All user maps', maps);
       this.completedMaps = maps.filter((map) => map.map_completed === 1);
+      this.projectMaps = maps.filter((map) => map.map_completed === 0);
       this.splitMapsToTiers();
     });
   }
