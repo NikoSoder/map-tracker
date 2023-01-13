@@ -103,11 +103,8 @@ export class StatisticsComponent implements OnInit {
       datasets: [
         {
           data: this.tierData?.map((map) => map.count),
-          // backgroundColor: '#0d6efd',
-          // backgroundColor: ['white', 'white', 'white'],
           borderColor: '#313133',
           color: 'white',
-          // hoverBackgroundColor: ['green', 'red', 'black', 'white', 'yellow'],
         },
       ],
     };
