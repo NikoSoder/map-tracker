@@ -1,4 +1,7 @@
-<div class="container">
+<div
+  class="container"
+  *ngIf="completedMaps.length || projectMaps.length; else noMaps"
+>
   <div class="row justify-content-center mb-4">
     <div class="col-sm-12 col-md-10 text-center info-container p-2">
       <h3 [ngStyle]="{ color: '#F3F4F6' }">Statistics</h3>
@@ -6,11 +9,15 @@
       <p>Number of projects: {{ projectMaps.length }}</p>
     </div>
   </div>
-  <h3 class="text-center mb-3" [ngStyle]="{ color: '#F3F4F6' }">
-    Completed maps by tiers
-  </h3>
+
   <div class="row justify-content-center p-2">
-    <div class="barchart col-sm-12 col-md-6 col-lg-6 me-md-2 p-2">
+    <div
+      class="barchart col-sm-12 col-md-6 col-lg-6 me-md-2 p-2"
+      *ngIf="completedMaps.length"
+    >
+      <p class="text-center mb-3" [ngStyle]="{ color: '#d0d0d8' }">
+        Completed maps by tiers
+      </p>
       <canvas
         baseChart
         [data]="barChartData"
@@ -19,7 +26,10 @@
       >
       </canvas>
     </div>
-    <div class="doughnutchart col-sm-12 col-md-5 col-lg-4 p-2">
+    <div
+      class="doughnutchart col-sm-12 col-md-5 col-lg-4 p-2"
+      *ngIf="completedMaps.length"
+    >
       <canvas
         baseChart
         [data]="doughnutChartData"
@@ -30,3 +40,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #noMaps>
+  <h2 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
+    No statistics available
+  </h2>
+  <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+    You can add maps to your account in the Add maps page
+  </p>
+</ng-template>
