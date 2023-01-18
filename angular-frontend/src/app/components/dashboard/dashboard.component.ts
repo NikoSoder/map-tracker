@@ -29,23 +29,19 @@ export class DashboardComponent implements OnInit {
   }
 
   onDelete(userMap: Map) {
-    console.log('here');
-    /* this.apiService.deleteMap(userMap.map_name).subscribe(() => {
-      if (userMap.map_completed === 1) {
-        this.completedMaps = this.completedMaps.filter(
-          (map) => map.map_name !== userMap.map_name
-        );
-        return;
-      }
+    this.apiService.deleteMap(userMap.map_name).subscribe(() => {
+      this.completedMaps = this.completedMaps.filter(
+        (map) => map.map_name !== userMap.map_name
+      );
+
       this.projectMaps = this.projectMaps.filter(
         (map) => map.map_name !== userMap.map_name
       );
-    }); */
+    });
   }
 
   sendMapToModal(userMap: Map) {
     this.deletedMap = userMap;
-    console.log(this.deletedMap);
   }
 
   onCompleted(userMap: Map) {
