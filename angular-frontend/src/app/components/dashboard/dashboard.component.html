@@ -7,12 +7,18 @@
     <div *ngIf="completedMaps.length" class="col-sm-12 col-lg-6">
       <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
 
-      <app-table [data]="completedMaps">
+      <app-table
+        (onDelete)="onDelete($event)"
+        [map]="deletedMap"
+        [data]="completedMaps"
+      >
         <ng-template #tableMethods let-map>
           <td class="text-center">
             <fa-icon
+              data-bs-toggle="modal"
+              data-bs-target="#Modal"
               class="ms-2"
-              (click)="onDelete(map)"
+              (click)="sendMapToModal(map)"
               [ngStyle]="{ color: '#B8767A' }"
               [icon]="faTrash"
             ></fa-icon>
@@ -22,7 +28,11 @@
     <div *ngIf="projectMaps.length" class="col-sm-12 col-lg-6">
       <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Projects</h2>
 
-      <app-table [data]="projectMaps">
+      <app-table
+        (onDelete)="onDelete($event)"
+        [map]="deletedMap"
+        [data]="projectMaps"
+      >
         <ng-template #tableMethods let-map>
           <td class="text-center">
             <fa-icon
@@ -31,8 +41,10 @@
               [icon]="faCheckCircle"
             ></fa-icon>
             <fa-icon
+              (click)="sendMapToModal(map)"
+              data-bs-toggle="modal"
+              data-bs-target="#Modal"
               class="ms-2"
-              (click)="onDelete(map)"
               [ngStyle]="{ color: '#B8767A' }"
               [icon]="faTrash"
             ></fa-icon>

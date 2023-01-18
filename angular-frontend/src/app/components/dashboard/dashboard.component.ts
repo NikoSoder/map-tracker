@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
   allMaps: Map[] = [];
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
+  deletedMap = {} as Map;
 
   faTrash = faTrash;
   faCheckCircle = faCheckCircle;
@@ -28,7 +29,8 @@ export class DashboardComponent implements OnInit {
   }
 
   onDelete(userMap: Map) {
-    this.apiService.deleteMap(userMap.map_name).subscribe(() => {
+    console.log('here');
+    /* this.apiService.deleteMap(userMap.map_name).subscribe(() => {
       if (userMap.map_completed === 1) {
         this.completedMaps = this.completedMaps.filter(
           (map) => map.map_name !== userMap.map_name
@@ -38,7 +40,12 @@ export class DashboardComponent implements OnInit {
       this.projectMaps = this.projectMaps.filter(
         (map) => map.map_name !== userMap.map_name
       );
-    });
+    }); */
+  }
+
+  sendMapToModal(userMap: Map) {
+    this.deletedMap = userMap;
+    console.log(this.deletedMap);
   }
 
   onCompleted(userMap: Map) {
