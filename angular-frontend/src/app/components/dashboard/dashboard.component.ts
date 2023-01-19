@@ -29,7 +29,8 @@ export class DashboardComponent implements OnInit {
   }
 
   onDelete(userMap: Map) {
-    this.apiService.deleteMap(userMap.map_name).subscribe(() => {
+    console.log('**');
+    /* this.apiService.deleteMap(userMap.map_name).subscribe(() => {
       this.completedMaps = this.completedMaps.filter(
         (map) => map.map_name !== userMap.map_name
       );
@@ -37,7 +38,7 @@ export class DashboardComponent implements OnInit {
       this.projectMaps = this.projectMaps.filter(
         (map) => map.map_name !== userMap.map_name
       );
-    });
+    }); */
   }
 
   sendMapToModal(userMap: Map) {

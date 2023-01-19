@@ -51,28 +51,31 @@
 <div
   class="modal fade"
   id="Modal"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="ModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
+    <div
+      [ngStyle]="{ border: '1px solid #ffffff8c' }"
+      class="modal-content bg-dark"
+    >
+      <div [ngStyle]="{ border: 'none' }" class="modal-header">
+        <h1 class="modal-title text-light fs-5" id="ModalLabel">
           {{ map.map_name }}
         </h1>
         <button
           type="button"
-          class="btn-close"
+          class="btn-close btn-close-white"
           data-bs-dismiss="modal"
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
-        Are you sure you want to delete {{ map.map_name }}
+      <div [ngStyle]="{ color: '#ffffff8c' }" class="modal-body">
+        Are you sure you want to delete {{ map.map_name }}?
       </div>
-      <div class="modal-footer">
+      <div [ngStyle]="{ border: 'none' }" class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+          Cancel
         </button>
         <button
           (click)="onDelete.emit(map)"
@@ -80,7 +83,7 @@
           type="button"
           class="btn btn-primary"
         >
-          Save changes
+          Delete
         </button>
       </div>
     </div>
