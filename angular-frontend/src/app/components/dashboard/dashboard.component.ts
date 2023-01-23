@@ -12,6 +12,8 @@ export class DashboardComponent implements OnInit {
   allMaps: Map[] = [];
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
+  deletedMap = {} as Map;
+
   faTrash = faTrash;
   faCheckCircle = faCheckCircle;
 
@@ -28,27 +30,29 @@ export class DashboardComponent implements OnInit {
 
   onDelete(userMap: Map) {
     this.apiService.deleteMap(userMap.map_name).subscribe(() => {
-      if (userMap.map_completed === 1) {
-        this.completedMaps = this.completedMaps.filter(
-          (map) => map.map_name !== userMap.map_name
-        );
-        return;
-      }
+      this.completedMaps = this.completedMaps.filter(
+        (map) => map.map_name !== userMap.map_name
+      );
+
       this.projectMaps = this.projectMaps.filter(
         (map) => map.map_name !== userMap.map_name
       );
     });
   }
 
+  sendMapToModal(userMap: Map) {
+    this.deletedMap = userMap;
+  }
+
   onCompleted(userMap: Map) {
     this.apiService.updateProject(userMap, userMap.map_name).subscribe(() => {
-      for (let i = 0; i < this.projectMaps.length; i++) {
-        if (this.projectMaps[i].map_name === userMap.map_name) {
-          const completedProject = this.projectMaps.splice(i, 1);
-          completedProject[0].map_completed = 1;
-          this.completedMaps.push(completedProject[0]);
-          break;
-        }
+      const index = this.projectMaps.findIndex(
+        (map) => map.map_name === userMap.map_name
+      );
+      if (index !== -1) {
+        const completedProject = this.projectMaps.splice(index, 1)[0];
+        completedProject.map_completed = 1;
+        this.completedMaps = this.completedMaps.concat(completedProject);
       }
     });
   }
