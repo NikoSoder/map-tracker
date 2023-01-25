@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav-bar">
+<!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav-bar">
   <div class="container-fluid">
     <span class="navbar-brand">
       <img
@@ -67,5 +67,44 @@
         </ul>
       </div>
     </div>
+  </div>
+</nav> -->
+<nav class="flex flex-row justify-between items-center p-4">
+  <div>
+    <h1 class="text-3xl text-neutral-100">Map Tracker</h1>
+  </div>
+  <div>
+    <ul
+      class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-7 text-neutral-400 font-semibold"
+    >
+      <li>
+        <a
+          routerLink="/dashboard"
+          ariaCurrentWhenActive="page"
+          routerLinkActive="activebutton"
+          class="nav-link"
+          aria-current="page"
+          >Dashboard</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLink="/add-maps"
+          routerLinkActive="activebutton"
+          ariaCurrentWhenActive="page"
+          class="nav-link mb-1"
+          >Add maps</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          routerLink="/statistics"
+          routerLinkActive="activebutton"
+          ariaCurrentWhenActive="page"
+          class="nav-link mb-1"
+          >Statistics</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

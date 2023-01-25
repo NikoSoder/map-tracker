@@ -1,19 +1,11 @@
-#nav-bar {
-  /* background-color: #212123; */
-}
-
 a {
   text-decoration: none;
 }
 
 .activebutton {
-  color: #fff;
+  @apply text-neutral-200;
 }
 
 .github-icon {
   color: white;
-}
-
-#logo-img {
-  height: 50px;
 }
