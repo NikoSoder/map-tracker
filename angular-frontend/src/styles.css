@@ -9,5 +9,6 @@
 }
 
 body {
-  background-color: #313133;
+  /* background-color: #313133; */
+  @apply bg-zinc-800;
 }
