@@ -3,9 +3,5 @@ a {
 }
 
 .activebutton {
-  @apply text-neutral-200;
-}
-
-.github-icon {
   color: white;
 }

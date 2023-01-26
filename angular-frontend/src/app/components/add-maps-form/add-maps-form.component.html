@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <form [formGroup]="mapForm" (ngSubmit)="onSubmit()">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -94,6 +94,66 @@
       <div *ngIf="errormsg" class="col-lg-8">
         <p class="error-message">{{ errormsg }}</p>
       </div>
+    </div>
+  </form>
+</div> -->
+
+<div class="container">
+  <form
+    [formGroup]="mapForm"
+    (ngSubmit)="onSubmit()"
+    class="border text-neutral-100 p-3"
+  >
+    <div>
+      <input
+        class="border rounded shadow shadow-neutral-600 mb-3 p-2 hover:border-blue-300"
+        type="text"
+        placeholder="Map name"
+        formControlName="map_name"
+      />
+    </div>
+    <div>
+      <select
+        class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
+        formControlName="map_type"
+      >
+        <option selected value="linear">Linear</option>
+        <option value="stage">Stage</option>
+      </select>
+    </div>
+    <div>
+      <div>
+        <input
+          class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
+          type="number"
+          formControlName="map_tier"
+          placeholder="Map tier"
+        />
+      </div>
+    </div>
+    <div>
+      <textarea
+        class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
+        placeholder="Map notes"
+        formControlName="map_notes"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <input class="mr-2" type="checkbox" formControlName="map_completed" />
+      <label for="">Mark map as completed</label>
+    </div>
+
+    <div>
+      <input
+        id="submit-btn"
+        class="mb-3"
+        type="submit"
+        value="Submit"
+        [disabled]="!mapForm.valid"
+      />
+    </div>
+    <div *ngIf="errormsg">
+      <p class="error-message">{{ errormsg }}</p>
     </div>
   </form>
 </div>
