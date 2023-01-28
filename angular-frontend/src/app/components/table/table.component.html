@@ -16,32 +16,41 @@
   </div>
   <input
     type="text"
-    class="pl-8 py-2 rounded-lg bg-zinc-700 text-neutral-300 border border-neutral-600 hover:border-neutral-400"
+    class="pl-8 py-2 rounded-lg bg-zinc-700 hover:border-neutral-400 text-neutral-300 border outline-neutral-600"
     placeholder="Search"
     #input
     (keyup)="onSearch(input.value)"
   />
 </div>
 
-<table
-  class="table table-dark table-striped table-hover table-bordered table-sm"
->
-  <thead class="table-secondary">
+<table class="border-collapse border border-neutral-500 w-full lg:w-1/2">
+  <thead class="text-neutral-800 bg-neutral-300">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Style</th>
-      <th scope="col">Tier</th>
-      <th scope="col">Notes</th>
-      <th scope="col"></th>
+      <th scope="border border-slate-600">NAME</th>
+      <th scope="border border-slate-600">STYLE</th>
+      <th scope="border border-slate-600">TIER</th>
+      <th scope="border border-slate-600">NOTES</th>
+      <th scope="border border-slate-600"></th>
     </tr>
   </thead>
-  <tbody class="table-body">
+  <tbody class="bg-zinc-600 text-neutral-100">
     <ng-container *ngFor="let map of data">
-      <tr *ngIf="map.map_name.includes(searchInput)">
-        <td>{{ map.map_name }}</td>
-        <td>{{ map.map_type }}</td>
-        <td>{{ map.map_tier }}</td>
-        <td>{{ map.map_notes }}</td>
+      <tr
+        *ngIf="map.map_name.includes(searchInput)"
+        class="hover:bg-zinc-500 body-row"
+      >
+        <td class="border border-neutral-500 px-3 py-1">
+          {{ map.map_name }}
+        </td>
+        <td class="border border-neutral-500 px-3 py-1">
+          {{ map.map_type }}
+        </td>
+        <td class="border border-neutral-500 px-3 py-1">
+          {{ map.map_tier }}
+        </td>
+        <td class="border border-neutral-500 px-3 py-1">
+          {{ map.map_notes }}
+        </td>
         <ng-container
           *ngTemplateOutlet="
             tableMethods || noTableMethods;
@@ -54,7 +63,7 @@
 </table>
 
 <!-- MODAL -->
-<div
+<!-- <div
   class="modal fade"
   id="Modal"
   aria-labelledby="ModalLabel"
@@ -94,7 +103,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <ng-template #noTableMethods>
   <td></td>

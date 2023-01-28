@@ -3,5 +3,5 @@ a {
 }
 
 .activebutton {
-  color: white;
+  @apply text-zinc-300;
 }
