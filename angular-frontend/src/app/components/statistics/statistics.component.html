@@ -45,7 +45,7 @@
   class="container mx-auto"
   *ngIf="completedMaps.length || projectMaps.length; else noMaps"
 >
-  <div class="max-w-4xl mx-auto">
+  <div class="wrapper-animation max-w-4xl mx-auto">
     <div
       class="text-center info-container mb-4 p-4 rounded-lg border-2 border-neutral-600"
     >
@@ -55,7 +55,7 @@
     </div>
 
     <div
-      class="chart-container flex flex-col md:flex-row p-4 rounded-lg border-2 border-neutral-600 justify-center"
+      class="chart-container flex flex-col sm:flex-row p-4 rounded-lg border-2 border-neutral-600 justify-center"
     >
       <div class="barchart mb-5 sm:mb-0 p-2" *ngIf="completedMaps.length">
         <p class="text-center text-slate-200 mb-3 text-lg">
