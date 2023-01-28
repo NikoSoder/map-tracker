@@ -3,9 +3,9 @@
   *ngIf="completedMaps.length || projectMaps.length; else noMaps"
   class="container mx-auto"
 >
-  <div class="row justify-content-center">
-    <div *ngIf="completedMaps.length" class="col-sm-12 col-lg-6">
-      <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
+  <div class="flex flex-col lg:flex-row px-3">
+    <div *ngIf="completedMaps.length" class="mb-8 flex-1 lg:mr-4">
+      <h2 class="text-neutral-300 text-2xl mb-3">Completed maps</h2>
 
       <app-table
         (onDelete)="onDelete($event)"
@@ -25,8 +25,8 @@
           </td> </ng-template
       ></app-table>
     </div>
-    <div *ngIf="projectMaps.length" class="col-sm-12 col-lg-6">
-      <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Projects</h2>
+    <div *ngIf="projectMaps.length" class="flex-1">
+      <h2 class="text-neutral-300 text-2xl mb-3">Projects</h2>
 
       <app-table
         (onDelete)="onDelete($event)"

@@ -6,7 +6,7 @@ textarea {
 }
 
 #submit-btn {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
   cursor: pointer;
 }
 
@@ -16,4 +16,17 @@ textarea {
 
 ::placeholder {
   @apply text-neutral-300;
+}
+
+/* Remove input type=number arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
