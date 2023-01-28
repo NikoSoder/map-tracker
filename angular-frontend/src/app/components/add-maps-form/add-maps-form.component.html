@@ -1,139 +1,53 @@
-<!-- <div class="container">
-  <form [formGroup]="mapForm" (ngSubmit)="onSubmit()">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <div class="form-floating mb-3">
-          <input
-            [ngStyle]="{ color: 'black' }"
-            type="text"
-            class="form-control"
-            id="map-name"
-            placeholder="map-name"
-            formControlName="map_name"
-          />
-          <label [ngStyle]="{ color: 'black' }" for="map-name">Map name</label>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-lg-4">
-        <div class="form-floating mb-3">
-          <select
-            formControlName="map_type"
-            class="form-select"
-            id="floatingSelect"
-          >
-            <option selected value="linear">Linear</option>
-            <option value="stage">Stage</option>
-          </select>
-          <label [ngStyle]="{ color: 'black' }" for="floatingSelect"
-            >Map style</label
-          >
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="form-floating mb-3">
-          <input
-            [ngStyle]="{ color: 'black' }"
-            class="form-control"
-            type="number"
-            formControlName="map_tier"
-            id="map-tier"
-            placeholder="map-tier"
-          />
-          <label [ngStyle]="{ color: 'black' }" for="map-tier">Tier</label>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center mb-3">
-      <div class="col-lg-8">
-        <div class="form-floating">
-          <textarea
-            class="form-control"
-            placeholder="map-notes"
-            id="map-notes"
-            formControlName="map_notes"
-          ></textarea>
-          <label [ngStyle]="{ color: 'black' }" for="map-notes">Notes</label>
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center mb-3">
-      <div class="col-lg-8">
-        <div id="checkbox" class="form-check">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            formControlName="map_completed"
-            id="map-completed"
-          />
-          <label
-            class="form-check-label"
-            for="map-completed"
-            [ngStyle]="{ color: '#CED4DA' }"
-          >
-            Mark map as done
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="row justify-content-center mb-3">
-      <div class="col-lg-8">
-        <div>
-          <input
-            class="btn btn-primary btn-form"
-            type="submit"
-            value="Submit"
-            [disabled]="!mapForm.valid"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div *ngIf="errormsg" class="col-lg-8">
-        <p class="error-message">{{ errormsg }}</p>
-      </div>
-    </div>
-  </form>
-</div> -->
-
-<div class="container">
+<div class="container mx-auto">
   <form
     [formGroup]="mapForm"
     (ngSubmit)="onSubmit()"
-    class="border text-neutral-100 p-3"
+    class="sm:border-2 sm:border-neutral-600 text-neutral-100 p-4 w-full max-w-lg mx-auto rounded-lg sm:shadow"
   >
-    <div>
+    <div class="w-full">
+      <label class="block text-neutral-300 font-bold mb-2" for="mapName">
+        Map name
+      </label>
       <input
-        class="border rounded shadow shadow-neutral-600 mb-3 p-2 hover:border-blue-300"
+        id="mapName"
+        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
         type="text"
         placeholder="Map name"
         formControlName="map_name"
       />
     </div>
-    <div>
+    <div class="w-full sm:w-1/2">
+      <label class="block text-neutral-200 font-bold mb-2" for="mapStyle">
+        Map style
+      </label>
       <select
-        class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
+        id="mapStyle"
+        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
         formControlName="map_type"
       >
         <option selected value="linear">Linear</option>
         <option value="stage">Stage</option>
       </select>
     </div>
-    <div>
-      <div>
-        <input
-          class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
-          type="number"
-          formControlName="map_tier"
-          placeholder="Map tier"
-        />
-      </div>
+    <div class="w-full">
+      <label class="block text-neutral-200 font-bold mb-2" for="mapTier">
+        Map tier
+      </label>
+      <input
+        id="mapTier"
+        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
+        type="number"
+        formControlName="map_tier"
+        placeholder="Map tier"
+      />
     </div>
-    <div>
+    <div class="w-full">
+      <label class="block text-neutral-200 font-bold mb-2" for="notes">
+        Notes
+      </label>
       <textarea
-        class="border mb-3 p-2 rounded shadow shadow-neutral-600 hover:border-blue-300"
+        id="notes"
+        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
         placeholder="Map notes"
         formControlName="map_notes"
       ></textarea>
