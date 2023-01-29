@@ -62,17 +62,33 @@
       <label class="text-neutral-200" for="check">Mark map as completed</label>
     </div>
 
-    <div>
+    <div class="relative flex items-center">
       <input
         id="submit-btn"
-        class="mb-3"
+        class=""
         type="submit"
         value="Submit"
         [disabled]="!mapForm.valid"
       />
-    </div>
-    <div *ngIf="errormsg">
-      <p class="error-message">{{ errormsg }}</p>
+      <div
+        class="error-message absolute inset-y-0 left-28 flex items-center"
+        *ngIf="errormsg"
+      >
+        <fa-icon
+          [icon]="faExclamationTriangle"
+          class="text-red-300 pr-1"
+        ></fa-icon>
+        <p class="text-red-300 font-semibold">{{ errormsg }}</p>
+      </div>
+      <div
+        class="success-message absolute inset-y-0 left-28 flex items-center"
+        *ngIf="successmsg"
+      >
+        <fa-icon [icon]="faCheck" class="text-green-300 pr-1"></fa-icon>
+        <p class="text-green-300 font-semibold">
+          {{ successmsg }}
+        </p>
+      </div>
     </div>
   </form>
 </div>
