@@ -32,6 +32,25 @@ app.get("/", async (req, res) => {
   }
 });
 
+// get map
+app.get("/:id", async (req, res) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const id = req.params.id;
+    const result = await conn.query(
+      ` SELECT * FROM ${process.env.TABLE_NAME} WHERE id=(?)`,
+      [id]
+    );
+
+    res.status(200).json({ result });
+  } catch (e) {
+    res.status(400).send(e.message);
+  } finally {
+    if (conn) return conn.end();
+  }
+});
+
 // add to database
 app.post("/", async (req, res) => {
   let conn;
