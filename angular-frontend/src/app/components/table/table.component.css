@@ -1,9 +1,20 @@
-input:focus {
-  box-shadow: 0px 1px 11px -5px rgb(247 247 247 / 76%);
-  border: 1px solid rgb(214, 209, 209);
-  color: black;
+fa-icon {
+  @apply text-neutral-300;
 }
 
-.table-body td {
-  color: #ced4da;
+::placeholder {
+  @apply text-neutral-400;
+}
+
+.body-row:hover {
+  animation: hover-animation 300ms forwards;
+}
+
+@keyframes hover-animation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.01);
+  }
 }

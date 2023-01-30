@@ -1,19 +1,7 @@
-#nav-bar {
-  /* background-color: #212123; */
-}
-
 a {
   text-decoration: none;
 }
 
 .activebutton {
-  color: #fff;
-}
-
-.github-icon {
-  color: white;
-}
-
-#logo-img {
-  height: 50px;
+  @apply text-zinc-300;
 }
