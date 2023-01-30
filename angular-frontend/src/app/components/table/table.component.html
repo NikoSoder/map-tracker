@@ -21,14 +21,18 @@
       <th scope="border border-slate-600"></th>
     </tr>
   </thead>
-  <tbody class="bg-zinc-600 text-neutral-100">
+  <tbody class="bg-zinc-700 text-neutral-100">
     <ng-container *ngFor="let map of data">
       <tr
         *ngIf="map.map_name.includes(searchInput)"
-        class="hover:bg-zinc-500 body-row"
+        class="hover:bg-zinc-600 body-row"
       >
         <td class="border border-neutral-500 px-3 py-1">
-          {{ map.map_name }}
+          <a
+            routerLink="/detail/{{ map.id }}"
+            class="hover:underline hover:font-semibold"
+            >{{ map.map_name }}</a
+          >
         </td>
         <td class="border border-neutral-500 px-3 py-1">
           {{ map.map_type }}
