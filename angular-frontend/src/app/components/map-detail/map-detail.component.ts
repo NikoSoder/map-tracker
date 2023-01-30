@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { ApiService } from 'src/app/api.service';
+import { Map } from 'src/app/types/map.interface';
 
 @Component({
   selector: 'app-map-detail',
@@ -7,7 +10,21 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./map-detail.component.css'],
 })
 export class MapDetailComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  map?: Map;
+  constructor(
+    private apiService: ApiService,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getMap();
+  }
+
+  getMap(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.apiService.getMap(id).subscribe((userMap) => {
+      this.map = userMap.result[0];
+    });
+  }
 }
