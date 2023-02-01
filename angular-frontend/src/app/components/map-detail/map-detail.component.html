@@ -1,31 +1,43 @@
-<div *ngIf="map" class="container mx-auto">
+<div *ngIf="map" class="container mx-auto flex justify-center">
   <div class="wrapper-animation sm:max-w-sm text-neutral-200">
-    <div class="bg-zinc-700 p-3 mb-3 rounded sm:border-2 sm:border-neutral-600">
+    <div class="bg-zinc-700 p-3 mb-3 rounded border-2 border-neutral-600">
       <h2 class="text-2xl mb-2 text-neutral-100">Map details</h2>
-      <p class="mb-1">Map name: {{ map.map_name }}</p>
-      <p class="mb-1">Map type: {{ map.map_type }}</p>
-      <p class="mb-1">Map tier: {{ map.map_tier }}</p>
-      <p class="mb-4">Map name: {{ map.map_name }}</p>
+      <p class="mb-1">
+        Map name: <span>{{ map.map_name }}</span>
+      </p>
+      <p class="mb-1">
+        Map type: <span>{{ map.map_type }}</span>
+      </p>
+      <p class="mb-4">
+        Map tier: <span>{{ map.map_tier }}</span>
+      </p>
       <button
-        class="bg-none border py-1 px-3 rounded hover:underline font-semibold"
+        class="bg-none border mr-3 py-1 px-3 rounded hover:underline font-semibold"
         (click)="goBack()"
       >
         <fa-icon [icon]="faAngleLeft"></fa-icon>
         Back
       </button>
+      <button
+        (click)="onDelete(map)"
+        class="text-red-300 hover:bg-red-100 hover:text-red-800 hover:border-red-200 border-red-300 border py-1 px-3 rounded font-semibolds"
+      >
+        <fa-icon [icon]="faTrash"></fa-icon> Delete map
+      </button>
     </div>
-    <div
-      class="bg-zinc-700 p-3 w-full rounded sm:border-2 sm:border-neutral-600"
-    >
+    <div class="bg-zinc-700 p-3 w-full rounded border-2 border-neutral-600">
       <label class="block text-neutral-200 font-bold mb-2" for="notes">
         Notes
       </label>
       <textarea
         id="notes"
+        #notes
+        [value]="map.map_notes"
         class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700 bg-zinc-700"
         placeholder=" {{ map.map_notes }} "
       ></textarea>
       <button
+        (click)="updateNotes(notes.value)"
         class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >
         Update notes

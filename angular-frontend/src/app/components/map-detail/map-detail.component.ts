@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
-import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-map-detail',
@@ -11,6 +11,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./map-detail.component.css'],
 })
 export class MapDetailComponent implements OnInit {
+  faTrash = faTrash;
   faAngleLeft = faAngleLeft;
   map?: Map;
   constructor(
@@ -27,8 +28,17 @@ export class MapDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.apiService.getMap(id).subscribe((userMap) => {
       this.map = userMap.result[0];
-      console.log(this.map);
     });
+  }
+
+  onDelete(userMap: Map) {
+    this.apiService.deleteMap(userMap.map_name).subscribe(() => {
+      this.goBack();
+    });
+  }
+
+  updateNotes(notes: string) {
+    console.log(notes);
   }
 
   goBack() {
