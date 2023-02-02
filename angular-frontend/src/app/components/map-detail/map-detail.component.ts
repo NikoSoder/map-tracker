@@ -44,13 +44,16 @@ export class MapDetailComponent implements OnInit {
 
   onCompleted(userMap: Map) {
     userMap.map_completed = 1;
-    this.apiService.updateProject(userMap, userMap.map_name).subscribe(() => {
+    this.apiService.updateMap(userMap, userMap.map_name).subscribe(() => {
       this.goBack();
     });
   }
 
-  updateNotes(notes: string) {
-    console.log(notes);
+  updateNotes(userMap: Map, notes: string) {
+    userMap.map_notes = notes;
+    this.apiService.updateMap(userMap, userMap.map_name).subscribe(() => {
+      this.goBack();
+    });
   }
 
   goBack() {
