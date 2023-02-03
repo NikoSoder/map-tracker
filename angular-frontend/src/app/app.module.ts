@@ -12,6 +12,7 @@ import { AddMapsFormComponent } from './components/add-maps-form/add-maps-form.c
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { MapDetailComponent } from './components/map-detail/map-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
     DashboardComponent,
     TableComponent,
     StatisticsComponent,
+    MapDetailComponent,
   ],
   imports: [
     BrowserModule,
