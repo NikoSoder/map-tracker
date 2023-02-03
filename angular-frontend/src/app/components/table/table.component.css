@@ -6,15 +6,6 @@ fa-icon {
   @apply text-neutral-400;
 }
 
-.body-row:hover {
-  animation: hover-animation 300ms forwards;
-}
-
-@keyframes hover-animation {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.01);
-  }
+th {
+  @apply pl-3 py-2;
 }
