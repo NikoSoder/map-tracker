@@ -18,7 +18,6 @@
       <th scope="border border-slate-600">STYLE</th>
       <th scope="border border-slate-600">TIER</th>
       <th scope="border border-slate-600">NOTES</th>
-      <th scope="border border-slate-600"></th>
     </tr>
   </thead>
   <tbody class="bg-zinc-700 text-neutral-100">
@@ -43,60 +42,7 @@
         <td class="border border-neutral-500 px-3 py-1">
           {{ map.map_notes }}
         </td>
-        <ng-container
-          *ngTemplateOutlet="
-            tableMethods || noTableMethods;
-            context: { $implicit: map }
-          "
-        ></ng-container>
       </tr>
     </ng-container>
   </tbody>
 </table>
-
-<!-- MODAL -->
-<!-- <div
-  class="modal fade"
-  id="Modal"
-  aria-labelledby="ModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div
-      [ngStyle]="{ border: '1px solid #ffffff8c' }"
-      class="modal-content bg-dark"
-    >
-      <div [ngStyle]="{ border: 'none' }" class="modal-header">
-        <h1 class="modal-title text-light fs-5" id="ModalLabel">
-          {{ map.map_name }}
-        </h1>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div [ngStyle]="{ color: '#ffffff8c' }" class="modal-body">
-        Are you sure you want to delete {{ map.map_name }}?
-      </div>
-      <div [ngStyle]="{ border: 'none' }" class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancel
-        </button>
-        <button
-          (click)="onDelete.emit(map)"
-          data-bs-dismiss="modal"
-          type="button"
-          class="btn btn-primary"
-        >
-          Delete
-        </button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<ng-template #noTableMethods>
-  <td></td>
-</ng-template>

@@ -6,50 +6,12 @@
     <div *ngIf="completedMaps.length" class="mb-8 flex-1 lg:mr-4">
       <h2 class="text-neutral-300 text-2xl mb-3">Completed maps</h2>
 
-      <app-table
-        (onDelete)="onDelete($event)"
-        [map]="deletedMap"
-        [data]="completedMaps"
-      >
-        <ng-template #tableMethods let-map>
-          <td class="text-center">
-            <fa-icon
-              data-bs-toggle="modal"
-              data-bs-target="#Modal"
-              class="ms-2"
-              (click)="sendMapToModal(map)"
-              [ngStyle]="{ color: '#B8767A' }"
-              [icon]="faTrash"
-            ></fa-icon>
-          </td> </ng-template
-      ></app-table>
+      <app-table [data]="completedMaps"> </app-table>
     </div>
     <div *ngIf="projectMaps.length" class="flex-1">
       <h2 class="text-neutral-300 text-2xl mb-3">Projects</h2>
 
-      <app-table
-        (onDelete)="onDelete($event)"
-        [map]="deletedMap"
-        [data]="projectMaps"
-      >
-        <ng-template #tableMethods let-map>
-          <td class="text-center">
-            <fa-icon
-              (click)="onCompleted(map)"
-              [ngStyle]="{ color: '#38B67B' }"
-              [icon]="faCheckCircle"
-            ></fa-icon>
-            <fa-icon
-              (click)="sendMapToModal(map)"
-              data-bs-toggle="modal"
-              data-bs-target="#Modal"
-              class="ms-2"
-              [ngStyle]="{ color: '#B8767A' }"
-              [icon]="faTrash"
-            ></fa-icon>
-          </td>
-        </ng-template>
-      </app-table>
+      <app-table [data]="projectMaps"> </app-table>
     </div>
   </div>
 </div>
