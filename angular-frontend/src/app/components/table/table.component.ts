@@ -8,7 +8,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
-  @Input() data!: Map[];
+  @Input() maps!: Map[];
   searchInput = '';
   faSearch = faSearch;
   constructor() {}
