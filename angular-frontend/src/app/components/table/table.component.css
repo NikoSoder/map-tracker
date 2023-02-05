@@ -1,9 +1,21 @@
-fa-icon {
+.search-icon {
   @apply text-neutral-300;
+}
+
+.sort-icon {
+  @apply text-neutral-600;
 }
 
 ::placeholder {
   @apply text-neutral-400;
+}
+
+.table-container {
+  max-height: 600px;
+}
+
+th {
+  @apply sticky top-0 text-neutral-800 bg-neutral-300;
 }
 
 .completed-badge {

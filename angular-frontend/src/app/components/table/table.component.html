@@ -1,61 +1,69 @@
 <div class="relative mb-2">
   <div class="absolute inset-y-0 left-0 flex items-center p-2">
-    <fa-icon [icon]="faSearch"></fa-icon>
+    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
   </div>
   <input
     type="text"
-    class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border outline-neutral-600"
+    class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
     placeholder="Search"
     #input
     (keyup)="onSearch(input.value)"
   />
 </div>
 
-<table class="border-collapse border border-neutral-500 w-full">
-  <thead class="text-neutral-800 bg-neutral-300">
-    <tr class="text-left">
-      <th scope="col" class="pl-3 py-2">Name</th>
-      <th scope="col" class="pl-3 py-2">Style</th>
-      <th scope="col" class="pl-3 py-2">Tier</th>
-      <th scope="col" class="pl-3 py-2">Notes</th>
-      <th scope="col" class="pl-3 py-2">Status</th>
-      <th scope="col" class="pl-3 py-2"></th>
-    </tr>
-  </thead>
-  <tbody class="bg-zinc-800 text-neutral-200">
-    <ng-container *ngFor="let map of maps">
-      <tr
-        *ngIf="map.map_name.includes(searchInput)"
-        class="hover:bg-zinc-700 border-b border-neutral-500"
-      >
-        <td class="px-3 py-1">
-          {{ map.map_name }}
-        </td>
-        <td class="px-3 py-1 text-neutral-400">
-          {{ map.map_type }}
-        </td>
-        <td class="px-3 py-1 text-neutral-400">
-          {{ map.map_tier }}
-        </td>
-        <td class="px-3 py-1 text-neutral-400">
-          {{ map.map_notes }}
-        </td>
-        <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
-          <span class="completed-badge">Completed</span>
-        </td>
-        <ng-template #project
-          ><td class="px-3 py-1">
-            <span class="project-badge">Project</span>
-          </td></ng-template
-        >
-        <td class="py-1">
-          <a
-            routerLink="/detail/{{ map.id }}"
-            class="text-blue-500 font-semibold hover:underline"
-            >Edit</a
-          >
-        </td>
+<div class="table-container overflow-x-auto overflow-y-auto">
+  <table class="border-collapse w-full">
+    <thead>
+      <tr class="text-left">
+        <th scope="col" class="pl-3 py-2">Name</th>
+        <th scope="col" class="pl-3 py-2">Style</th>
+        <th scope="col" class="pl-3 py-2">Tier</th>
+        <th scope="col" class="pl-3 py-2">Notes</th>
+        <th scope="col" class="pl-3 py-2">
+          Status<fa-icon
+            class="sort-icon ml-1"
+            size="lg"
+            [icon]="faSort"
+          ></fa-icon>
+        </th>
+        <th scope="col" class="pl-3 py-2"></th>
       </tr>
-    </ng-container>
-  </tbody>
-</table>
+    </thead>
+    <tbody class="bg-zinc-800 text-neutral-200">
+      <ng-container *ngFor="let map of maps">
+        <tr
+          *ngIf="map.map_name.includes(searchInput)"
+          class="hover:bg-zinc-700 border-b border-neutral-500"
+        >
+          <td class="px-3 py-1">
+            {{ map.map_name }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_type }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_tier }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_notes }}
+          </td>
+          <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
+            <span class="completed-badge">Completed</span>
+          </td>
+          <ng-template #project
+            ><td class="px-3 py-1">
+              <span class="project-badge">Project</span>
+            </td></ng-template
+          >
+          <td class="py-1">
+            <a
+              routerLink="/detail/{{ map.id }}"
+              class="text-blue-500 font-semibold hover:underline"
+              >Edit</a
+            >
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
