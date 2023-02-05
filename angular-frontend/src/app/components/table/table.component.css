@@ -6,6 +6,10 @@ fa-icon {
   @apply text-neutral-400;
 }
 
-th {
-  @apply pl-3 py-2;
+.completed-badge {
+  @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-900 text-green-300;
+}
+
+.project-badge {
+  @apply text-xs font-medium  px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300;
 }

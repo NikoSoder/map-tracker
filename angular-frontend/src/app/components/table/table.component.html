@@ -14,11 +14,12 @@
 <table class="border-collapse border border-neutral-500 w-full">
   <thead class="text-neutral-800 bg-neutral-300">
     <tr class="text-left">
-      <th scope="border border-slate-600">Name</th>
-      <th scope="border border-slate-600">Style</th>
-      <th scope="border border-slate-600">Tier</th>
-      <th scope="border border-slate-600">Notes</th>
-      <th scope="border border-slate-600"></th>
+      <th scope="col" class="pl-3 py-2">Name</th>
+      <th scope="col" class="pl-3 py-2">Style</th>
+      <th scope="col" class="pl-3 py-2">Tier</th>
+      <th scope="col" class="pl-3 py-2">Notes</th>
+      <th scope="col" class="pl-3 py-2">Status</th>
+      <th scope="col" class="pl-3 py-2"></th>
     </tr>
   </thead>
   <tbody class="bg-zinc-800 text-neutral-200">
@@ -39,6 +40,14 @@
         <td class="px-3 py-1 text-neutral-400">
           {{ map.map_notes }}
         </td>
+        <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
+          <span class="completed-badge">Completed</span>
+        </td>
+        <ng-template #project
+          ><td class="px-3 py-1">
+            <span class="project-badge">Project</span>
+          </td></ng-template
+        >
         <td class="py-1">
           <a
             routerLink="/detail/{{ map.id }}"
