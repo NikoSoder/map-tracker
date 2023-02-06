@@ -1,14 +1,19 @@
-<div class="relative mb-2">
-  <div class="absolute inset-y-0 left-0 flex items-center p-2">
-    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+<div class="flex flex-col sm:flex-row sm:justify-between mb-2">
+  <div class="mb-1 sm:mb-0">
+    <h2 class="text-neutral-300 text-2xl">Your maps</h2>
   </div>
-  <input
-    type="text"
-    class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
-    placeholder="Search"
-    #input
-    (keyup)="onSearch(input.value)"
-  />
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 flex items-center p-2">
+      <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+    </div>
+    <input
+      type="text"
+      class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
+      placeholder="Search"
+      #input
+      (keyup)="onSearch(input.value)"
+    />
+  </div>
 </div>
 
 <div class="table-container overflow-x-auto overflow-y-auto">
