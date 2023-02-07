@@ -1,20 +1,27 @@
-fa-icon {
+.search-icon {
   @apply text-neutral-300;
+}
+
+.sort-icon {
+  @apply text-neutral-600;
 }
 
 ::placeholder {
   @apply text-neutral-400;
 }
 
-.body-row:hover {
-  animation: hover-animation 300ms forwards;
+.table-container {
+  max-height: 500px;
 }
 
-@keyframes hover-animation {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.01);
-  }
+th {
+  @apply sticky top-0 text-neutral-800 bg-neutral-300;
+}
+
+.completed-badge {
+  @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-900 text-green-300;
+}
+
+.project-badge {
+  @apply text-xs font-medium  px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300;
 }
