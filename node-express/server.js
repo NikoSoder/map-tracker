@@ -32,6 +32,25 @@ app.get("/", async (req, res) => {
   }
 });
 
+// get map
+app.get("/:id", async (req, res) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const id = req.params.id;
+    const result = await conn.query(
+      ` SELECT * FROM ${process.env.TABLE_NAME} WHERE id=(?)`,
+      [id]
+    );
+
+    res.status(200).json({ result });
+  } catch (e) {
+    res.status(400).send(e.message);
+  } finally {
+    if (conn) return conn.end();
+  }
+});
+
 // add to database
 app.post("/", async (req, res) => {
   let conn;
@@ -77,11 +96,11 @@ app.put("/:name", async (req, res) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const name = req.params.name;
+    const { map_name, map_type, map_tier, map_notes, map_completed } = req.body;
     const result = await conn.query(
-      `UPDATE ${process.env.TABLE_NAME} SET map_completed=1 
+      `UPDATE ${process.env.TABLE_NAME} SET map_completed='${map_completed}',map_notes='${map_notes}',map_tier='${map_tier}',map_type='${map_type}',map_name='${map_name}' 
       WHERE map_name=(?)`,
-      [name]
+      [map_name]
     );
 
     res.status(200).json({ message: "Project done!" });

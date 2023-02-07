@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
+import {
+  faCheck,
+  faExclamationTriangle,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-maps-form',
@@ -9,7 +13,10 @@ import { Map } from 'src/app/types/map.interface';
   styleUrls: ['./add-maps-form.component.css'],
 })
 export class AddMapsFormComponent implements OnInit {
+  faExclamationTriangle = faExclamationTriangle;
+  faCheck = faCheck;
   errormsg = '';
+  successmsg = '';
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
@@ -26,6 +33,7 @@ export class AddMapsFormComponent implements OnInit {
   });
 
   onSubmit() {
+    this.successmsg = '';
     this.errormsg = '';
     const form = this.mapForm.value;
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
@@ -37,6 +45,7 @@ export class AddMapsFormComponent implements OnInit {
       }
       this.apiService.createMap(form).subscribe((res) => {
         console.log(res);
+        this.successmsg = 'Map added';
       });
     });
 

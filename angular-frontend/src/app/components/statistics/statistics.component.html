@@ -1,51 +1,53 @@
 <div
-  class="container"
+  class="container mx-auto px-3"
   *ngIf="completedMaps.length || projectMaps.length; else noMaps"
 >
-  <div class="row justify-content-center mb-4">
-    <div class="col-sm-12 col-md-10 text-center info-container p-2">
-      <h3 [ngStyle]="{ color: '#F3F4F6' }">Statistics</h3>
-      <p>Total maps done: {{ completedMaps.length }}</p>
-      <p>Number of projects: {{ projectMaps.length }}</p>
+  <div class="wrapper-animation max-w-4xl mx-auto">
+    <div class="text-center mb-4 p-4 rounded-lg border-2 border-neutral-600">
+      <h3 class="text-2xl mb-2 text-slate-200">Statistics</h3>
+      <p class="text-slate-300">Total maps done: {{ completedMaps.length }}</p>
+      <p class="text-slate-300">Number of projects: {{ projectMaps.length }}</p>
     </div>
-  </div>
 
-  <div class="row justify-content-center p-2">
     <div
-      class="barchart col-sm-12 col-md-6 col-lg-6 me-md-2 p-2"
-      *ngIf="completedMaps.length"
+      class="flex flex-col sm:flex-row p-4 rounded-lg border-2 border-neutral-600 justify-around items-center"
     >
-      <p class="text-center mb-3" [ngStyle]="{ color: '#d0d0d8' }">
-        Completed maps by tiers
-      </p>
-      <canvas
-        baseChart
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [type]="'bar'"
+      <div
+        class="barchart mb-5 sm:mb-0 p-2 max-w-md sm:max-w-xs"
+        *ngIf="completedMaps.length"
       >
-      </canvas>
-    </div>
-    <div
-      class="doughnutchart col-sm-12 col-md-5 col-lg-4 p-2"
-      *ngIf="completedMaps.length"
-    >
-      <canvas
-        baseChart
-        [data]="doughnutChartData"
-        [options]="doughnutChartOptions"
-        [type]="'doughnut'"
+        <p class="text-center text-slate-200 mb-3 text-lg">
+          Completed maps by tiers
+        </p>
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="'bar'"
+        >
+        </canvas>
+      </div>
+      <div
+        class="doughnutchart p-2 max-w-md sm:max-w-xs"
+        *ngIf="completedMaps.length"
       >
-      </canvas>
+        <canvas
+          baseChart
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+          [type]="'doughnut'"
+        >
+        </canvas>
+      </div>
     </div>
   </div>
 </div>
 
 <ng-template #noMaps>
-  <h2 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
+  <h2 class="text-center text-3xl text-neutral-200 mb-1">
     No statistics available
   </h2>
-  <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+  <p class="text-center text-neutral-300">
     You can add maps to your account in the Add maps page
   </p>
 </ng-template>

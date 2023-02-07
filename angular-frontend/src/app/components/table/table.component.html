@@ -1,95 +1,74 @@
-<div class="input-group w-50 mb-1">
-  <span class="input-group-text bg-dark bg-gradient">
-    <fa-icon [ngStyle]="{ color: '#fff' }" [icon]="faSearch"></fa-icon>
-  </span>
-  <input
-    type="text"
-    class="form-control bg-dark text-white"
-    placeholder="Search"
-    #input
-    (keyup)="onSearch(input.value)"
-    list="datalistOptions"
-  />
-  <datalist id="datalistOptions">
-    <ng-container *ngFor="let map of data">
-      <option value="{{ map.map_name }}"></option>
-    </ng-container>
-  </datalist>
-</div>
-
-<table
-  class="table table-dark table-striped table-hover table-bordered table-sm"
->
-  <thead class="table-secondary">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Style</th>
-      <th scope="col">Tier</th>
-      <th scope="col">Notes</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody class="table-body">
-    <ng-container *ngFor="let map of data">
-      <tr *ngIf="map.map_name.includes(searchInput)">
-        <td>{{ map.map_name }}</td>
-        <td>{{ map.map_type }}</td>
-        <td>{{ map.map_tier }}</td>
-        <td>{{ map.map_notes }}</td>
-        <ng-container
-          *ngTemplateOutlet="
-            tableMethods || noTableMethods;
-            context: { $implicit: map }
-          "
-        ></ng-container>
-      </tr>
-    </ng-container>
-  </tbody>
-</table>
-
-<!-- MODAL -->
-<div
-  class="modal fade"
-  id="Modal"
-  aria-labelledby="ModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div
-      [ngStyle]="{ border: '1px solid #ffffff8c' }"
-      class="modal-content bg-dark"
-    >
-      <div [ngStyle]="{ border: 'none' }" class="modal-header">
-        <h1 class="modal-title text-light fs-5" id="ModalLabel">
-          {{ map.map_name }}
-        </h1>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div [ngStyle]="{ color: '#ffffff8c' }" class="modal-body">
-        Are you sure you want to delete {{ map.map_name }}?
-      </div>
-      <div [ngStyle]="{ border: 'none' }" class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cancel
-        </button>
-        <button
-          (click)="onDelete.emit(map)"
-          data-bs-dismiss="modal"
-          type="button"
-          class="btn btn-primary"
-        >
-          Delete
-        </button>
-      </div>
+<div class="flex flex-col sm:flex-row sm:justify-between mb-2">
+  <div class="mb-1 sm:mb-0">
+    <h2 class="text-neutral-300 text-2xl">Your maps</h2>
+  </div>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 flex items-center p-2">
+      <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
     </div>
+    <input
+      type="text"
+      class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
+      placeholder="Search"
+      #input
+      (keyup)="onSearch(input.value)"
+    />
   </div>
 </div>
 
-<ng-template #noTableMethods>
-  <td></td>
-</ng-template>
+<div class="table-container overflow-x-auto overflow-y-auto">
+  <table class="border-collapse w-full">
+    <thead>
+      <tr class="text-left">
+        <th scope="col" class="pl-3 py-2">Name</th>
+        <th scope="col" class="pl-3 py-2">Style</th>
+        <th scope="col" class="pl-3 py-2">Tier</th>
+        <th scope="col" class="pl-3 py-2">Notes</th>
+        <th scope="col" class="pl-3 py-2">
+          Status<fa-icon
+            class="sort-icon ml-1"
+            size="lg"
+            [icon]="faSort"
+          ></fa-icon>
+        </th>
+        <th scope="col" class="pl-3 py-2"></th>
+      </tr>
+    </thead>
+    <tbody class="bg-zinc-800 text-neutral-200">
+      <ng-container *ngFor="let map of maps">
+        <tr
+          *ngIf="map.map_name.includes(searchInput)"
+          class="hover:bg-zinc-700 border-b border-neutral-500"
+        >
+          <td class="px-3 py-1">
+            {{ map.map_name }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_type }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_tier }}
+          </td>
+          <td class="px-3 py-1 text-neutral-400">
+            {{ map.map_notes }}
+          </td>
+          <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
+            <span class="completed-badge">Completed</span>
+          </td>
+          <ng-template #project
+            ><td class="px-3 py-1">
+              <span class="project-badge">Project</span>
+            </td></ng-template
+          >
+          <td class="py-1">
+            <a
+              routerLink="/detail/{{ map.id }}"
+              class="text-blue-500 font-semibold hover:underline"
+              >Edit</a
+            >
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

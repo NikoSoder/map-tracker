@@ -1,65 +1,15 @@
-<!-- chart js stats component here? -->
 <div
-  *ngIf="completedMaps.length || projectMaps.length; else noMaps"
-  class="container"
+  *ngIf="userMaps.length; else noMaps"
+  class="wrapper-animation container mx-auto px-2 lg:flex lg:justify-center"
 >
-  <div class="row justify-content-center">
-    <div *ngIf="completedMaps.length" class="col-sm-12 col-lg-6">
-      <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Completed maps</h2>
-
-      <app-table
-        (onDelete)="onDelete($event)"
-        [map]="deletedMap"
-        [data]="completedMaps"
-      >
-        <ng-template #tableMethods let-map>
-          <td class="text-center">
-            <fa-icon
-              data-bs-toggle="modal"
-              data-bs-target="#Modal"
-              class="ms-2"
-              (click)="sendMapToModal(map)"
-              [ngStyle]="{ color: '#B8767A' }"
-              [icon]="faTrash"
-            ></fa-icon>
-          </td> </ng-template
-      ></app-table>
-    </div>
-    <div *ngIf="projectMaps.length" class="col-sm-12 col-lg-6">
-      <h2 class="mb-3" [ngStyle]="{ color: '#F3F4F6' }">Projects</h2>
-
-      <app-table
-        (onDelete)="onDelete($event)"
-        [map]="deletedMap"
-        [data]="projectMaps"
-      >
-        <ng-template #tableMethods let-map>
-          <td class="text-center">
-            <fa-icon
-              (click)="onCompleted(map)"
-              [ngStyle]="{ color: '#38B67B' }"
-              [icon]="faCheckCircle"
-            ></fa-icon>
-            <fa-icon
-              (click)="sendMapToModal(map)"
-              data-bs-toggle="modal"
-              data-bs-target="#Modal"
-              class="ms-2"
-              [ngStyle]="{ color: '#B8767A' }"
-              [icon]="faTrash"
-            ></fa-icon>
-          </td>
-        </ng-template>
-      </app-table>
-    </div>
+  <div class="lg:w-3/4">
+    <app-table [maps]="userMaps"> </app-table>
   </div>
 </div>
 
 <ng-template #noMaps>
-  <h2 class="text-center" [ngStyle]="{ color: '#F3F4F6' }">
-    No maps available
-  </h2>
-  <p class="text-center" [ngStyle]="{ color: '#CED4DA' }">
+  <h2 class="text-center text-3xl text-neutral-200 mb-1">No maps available</h2>
+  <p class="text-center text-neutral-300">
     You can add maps to your account in the Add maps page
   </p>
 </ng-template>

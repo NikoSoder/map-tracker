@@ -21,6 +21,12 @@ export class ApiService {
     return this.http.get<Map[]>(this.API_URL);
   }
 
+  //TODO: change any types
+  getMap(id: number): Observable<any> {
+    const url = `${this.API_URL}${id}`;
+    return this.http.get<any>(url);
+  }
+
   createMap(data: any): Observable<Map> {
     return this.http.post<Map>(this.API_URL, data, httpOptions);
   }
@@ -29,7 +35,7 @@ export class ApiService {
     return this.http.delete(`${this.API_URL}${name}`);
   }
 
-  updateProject(map: Map, name: string): Observable<{}> {
+  updateMap(map: Map, name: string): Observable<{}> {
     return this.http.put(`${this.API_URL}${name}`, map);
   }
 }

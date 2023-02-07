@@ -1,9 +1,27 @@
-input:focus {
-  box-shadow: 0px 1px 11px -5px rgb(247 247 247 / 76%);
-  border: 1px solid rgb(214, 209, 209);
-  color: black;
+.search-icon {
+  @apply text-neutral-300;
 }
 
-.table-body td {
-  color: #ced4da;
+.sort-icon {
+  @apply text-neutral-600;
+}
+
+::placeholder {
+  @apply text-neutral-400;
+}
+
+.table-container {
+  max-height: 500px;
+}
+
+th {
+  @apply sticky top-0 text-neutral-800 bg-neutral-300;
+}
+
+.completed-badge {
+  @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-900 text-green-300;
+}
+
+.project-badge {
+  @apply text-xs font-medium  px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300;
 }

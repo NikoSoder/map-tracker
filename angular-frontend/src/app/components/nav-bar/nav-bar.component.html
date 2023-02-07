@@ -1,71 +1,22 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav-bar">
-  <div class="container-fluid">
-    <span class="navbar-brand">
-      <img
-        id="logo-img"
-        class="rounded-circle"
-        src="https://w7.pngwing.com/pngs/946/101/png-transparent-counter-strike-global-offensive-counter-strike-source-counter-strike-1-6-computer-icons-counter-strike-logo-video-game-silhouette-thumbnail.png"
-        alt="cs source logo"
-      />
-    </span>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasDarkNavbar"
-      aria-controls="offcanvasDarkNavbar"
+<nav class="flex flex-row justify-between items-center p-4">
+  <div>
+    <h1 class="text-3xl text-neutral-200">Map Tracker</h1>
+  </div>
+  <div>
+    <ul
+      class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-7 text-neutral-400 font-semibold"
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div
-      class="offcanvas offcanvas-end text-bg-dark"
-      tabindex="-1"
-      id="offcanvasDarkNavbar"
-      aria-labelledby="offcanvasDarkNavbarLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
-          Map tracker
-        </h5>
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a
-              routerLink="/dashboard"
-              ariaCurrentWhenActive="page"
-              routerLinkActive="activebutton"
-              class="nav-link"
-              aria-current="page"
-              >Dashboard</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              routerLink="/add-maps"
-              routerLinkActive="activebutton"
-              ariaCurrentWhenActive="page"
-              class="nav-link mb-1"
-              >Add maps</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              routerLink="/statistics"
-              routerLinkActive="activebutton"
-              ariaCurrentWhenActive="page"
-              class="nav-link mb-1"
-              >Statistics</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="activebutton">Dashboard</a>
+      </li>
+      <li>
+        <a routerLink="/add-maps" routerLinkActive="activebutton">Add maps</a>
+      </li>
+      <li>
+        <a routerLink="/statistics" routerLinkActive="activebutton"
+          >Statistics</a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

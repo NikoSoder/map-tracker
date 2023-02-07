@@ -1,33 +1,21 @@
-input:focus,
-textarea:focus,
-.form-select {
-  box-shadow: 0px 1px 11px -5px rgb(247 247 247 / 76%);
-  border: 1px solid rgb(214, 209, 209);
-  color: black;
+input,
+select,
+option,
+textarea {
+  @apply bg-zinc-700;
 }
 
-.form-control,
-.form-select,
-option {
-  background-color: #e8f0fe;
+#submit-btn {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  cursor: pointer;
 }
 
-.form-floating {
-  color: #d1d5db;
+#submit-btn:disabled {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed;
 }
 
-#checkbox {
-  color: #e8f0fe;
-}
-
-.btn-form {
-  padding: 0.5rem 2rem 0.5rem 2rem;
-  border-radius: 15px;
-}
-
-.error-message {
-  display: inline-block;
-  color: #f3c1c4;
+::placeholder {
+  @apply text-neutral-300;
 }
 
 /* Remove input type=number arrows */
@@ -41,4 +29,45 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.error-message {
+  animation: error-animation 600ms forwards;
+}
+
+.success-message {
+  animation: success-animation 600ms forwards;
+}
+
+@keyframes error-animation {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(10px);
+  }
+  40% {
+    transform: translate(-10px);
+  }
+  60% {
+    transform: translate(10px);
+  }
+  80% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes success-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

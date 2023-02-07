@@ -26,6 +26,7 @@ export class StatisticsComponent implements OnInit {
   // BAR CHART
   barChartData: any;
   barChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
     color: 'rgb(243, 244, 246)',
     plugins: {
       legend: {
@@ -49,6 +50,7 @@ export class StatisticsComponent implements OnInit {
   // DOUGHNUT CHART
   doughnutChartData: any;
   doughnutChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
     color: 'rgb(243, 244, 246)',
     plugins: {
       legend: {
