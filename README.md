@@ -48,6 +48,6 @@ CREATE TABLE table_name (
 
 - Angular
 - TypeScript
-- Bootstrap
+- Tailwind
 - Node
 - Express
