@@ -31,6 +31,10 @@ export class TableComponent implements OnInit {
         return this.sortOrder === 'asc'
           ? a[field] - b[field]
           : b[field] - a[field];
+      } else if (field === 'map_completed') {
+        return this.sortOrder === 'asc'
+          ? Number(a[field]) - Number(b[field])
+          : Number(b[field]) - Number(a[field]);
       } else {
         return 0;
       }
