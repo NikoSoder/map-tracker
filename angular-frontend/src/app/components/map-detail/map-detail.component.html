@@ -12,25 +12,27 @@
         Map tier: <span>{{ map.map_tier }}</span>
       </p>
       <button
-        class="bg-none border mr-3 py-1 px-3 rounded hover:underline font-semibold mb-3"
-        (click)="goBack()"
-      >
-        <fa-icon [icon]="faAngleLeft"></fa-icon>
-        Back
-      </button>
-      <button
         (click)="onDelete(map)"
-        class="text-red-300 hover:bg-red-100 hover:text-red-800 hover:border-red-200 border-red-300 border py-1 px-3 rounded font-semibold mr-3 mb-3"
+        class="text-red-300 text-sm hover:bg-red-100 hover:text-red-800 hover:border-red-200 border-red-300 border py-1 px-3 rounded font-semibold mr-3 mb-3"
       >
         <fa-icon [icon]="faTrash"></fa-icon> Delete map
       </button>
       <button
         *ngIf="map.map_completed === 0"
         (click)="onCompleted(map)"
-        class="text-green-300 hover:bg-green-100 hover:text-green-800 hover:border-green-200 border-green-300 border py-1 px-3 rounded font-semibold mb-3"
+        class="text-green-300 text-sm hover:bg-green-100 hover:text-green-800 hover:border-green-200 border-green-300 border py-1 px-3 rounded font-semibold mb-3"
       >
         <fa-icon [icon]="faCheckCircle"></fa-icon> Complete
       </button>
+      <div class="mb-2">
+        <button
+          class="bg-none text-sm border py-1 px-3 rounded-full hover:underline font-semibold"
+          (click)="goBack()"
+        >
+          <fa-icon [icon]="faArrowLeft"></fa-icon>
+          Back
+        </button>
+      </div>
     </div>
     <div class="bg-zinc-700 p-3 w-full rounded border-2 border-neutral-600">
       <label class="block text-neutral-200 font-bold mb-2" for="notes">
@@ -44,7 +46,7 @@
       ></textarea>
       <button
         (click)="updateNotes(map, notes.value)"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3"
+        class="bg-blue-600 hover:bg-blue-700 text-sm text-white font-bold py-2 px-4 rounded mb-2"
       >
         Update notes
       </button>
