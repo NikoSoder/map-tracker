@@ -20,9 +20,21 @@
   <table class="border-collapse w-full">
     <thead>
       <tr class="text-left">
-        <th scope="col" class="pl-3 py-2">Name</th>
+        <th (click)="sort('map_name')" scope="col" class="pl-3 py-2">
+          Name<fa-icon
+            class="sort-icon ml-1"
+            size="lg"
+            [icon]="faSort"
+          ></fa-icon>
+        </th>
         <th scope="col" class="pl-3 py-2">Style</th>
-        <th scope="col" class="pl-3 py-2">Tier</th>
+        <th (click)="sort('map_tier')" scope="col" class="pl-3 py-2">
+          Tier<fa-icon
+            class="sort-icon ml-1"
+            size="lg"
+            [icon]="faSort"
+          ></fa-icon>
+        </th>
         <th scope="col" class="pl-3 py-2">Notes</th>
         <th scope="col" class="pl-3 py-2">
           Status<fa-icon
