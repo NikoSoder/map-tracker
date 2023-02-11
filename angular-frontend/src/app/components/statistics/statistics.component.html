@@ -2,21 +2,21 @@
   class="container mx-auto px-3"
   *ngIf="completedMaps.length || projectMaps.length; else noMaps"
 >
-  <div class="wrapper-animation max-w-4xl mx-auto">
-    <div class="text-center mb-4 p-4 rounded-lg border-2 border-neutral-600">
-      <h3 class="text-2xl mb-2 text-slate-200">Statistics</h3>
+  <div class="wrapper-animation mx-auto max-w-4xl">
+    <div class="mb-4 rounded-lg border-2 border-neutral-600 p-4 text-center">
+      <h3 class="mb-2 text-2xl text-slate-200">Statistics</h3>
       <p class="text-slate-300">Total maps done: {{ completedMaps.length }}</p>
       <p class="text-slate-300">Number of projects: {{ projectMaps.length }}</p>
     </div>
 
     <div
-      class="flex flex-col sm:flex-row p-4 rounded-lg border-2 border-neutral-600 justify-around items-center"
+      class="flex flex-col items-center justify-around rounded-lg border-2 border-neutral-600 p-4 sm:flex-row"
     >
       <div
-        class="barchart mb-5 sm:mb-0 p-2 max-w-md sm:max-w-xs"
+        class="barchart mb-5 max-w-md p-2 sm:mb-0 sm:max-w-xs"
         *ngIf="completedMaps.length"
       >
-        <p class="text-center text-slate-200 mb-3 text-lg">
+        <p class="mb-3 text-center text-lg text-slate-200">
           Completed maps by tiers
         </p>
         <canvas
@@ -28,7 +28,7 @@
         </canvas>
       </div>
       <div
-        class="doughnutchart p-2 max-w-md sm:max-w-xs"
+        class="doughnutchart max-w-md p-2 sm:max-w-xs"
         *ngIf="completedMaps.length"
       >
         <canvas
@@ -44,7 +44,7 @@
 </div>
 
 <ng-template #noMaps>
-  <h2 class="text-center text-3xl text-neutral-200 mb-1">
+  <h2 class="mb-1 text-center text-3xl text-neutral-200">
     No statistics available
   </h2>
   <p class="text-center text-neutral-300">

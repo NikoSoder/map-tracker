@@ -6,12 +6,12 @@ textarea {
 }
 
 #submit-btn {
-  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
+  @apply rounded bg-blue-600 py-2 px-4 font-bold text-white hover:bg-blue-700;
   cursor: pointer;
 }
 
 #submit-btn:disabled {
-  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed;
+  @apply cursor-not-allowed rounded bg-blue-500 py-2 px-4 font-bold text-white opacity-50;
 }
 
 ::placeholder {
