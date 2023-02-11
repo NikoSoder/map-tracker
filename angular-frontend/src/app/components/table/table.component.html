@@ -27,7 +27,10 @@
             [icon]="faSort"
           ></fa-icon>
         </th>
-        <th scope="col" class="pl-3 py-2">Style</th>
+        <th (click)="sort('map_type')" scope="col" class="pl-3 py-2">
+          Style
+          <fa-icon class="sort-icon ml-1" size="lg" [icon]="faSort"></fa-icon>
+        </th>
         <th (click)="sort('map_tier')" scope="col" class="pl-3 py-2">
           Tier<fa-icon
             class="sort-icon ml-1"

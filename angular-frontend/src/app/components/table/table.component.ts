@@ -35,6 +35,10 @@ export class TableComponent implements OnInit {
         return this.sortOrder === 'asc'
           ? Number(a[field]) - Number(b[field])
           : Number(b[field]) - Number(a[field]);
+      } else if (field === 'map_type') {
+        return this.sortOrder === 'asc'
+          ? a[field].localeCompare(b[field])
+          : b[field].localeCompare(a[field]);
       } else {
         return 0;
       }
