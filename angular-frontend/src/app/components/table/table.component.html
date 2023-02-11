@@ -1,6 +1,6 @@
 <div class="mb-2 flex flex-col sm:flex-row sm:justify-between">
   <div class="mb-1 sm:mb-0">
-    <h2 class="text-2xl text-neutral-300">Your maps</h2>
+    <h2 class="text-2xl font-medium text-neutral-300">Your maps</h2>
   </div>
   <div class="relative">
     <div class="absolute inset-y-0 left-0 flex items-center p-2">
@@ -21,9 +21,10 @@
     <thead>
       <tr class="text-left">
         <th
+          tabindex="0"
           (click)="sort('map_name')"
           scope="col"
-          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200 focus:bg-neutral-200 focus:outline focus:outline-1 focus:outline-blue-300"
         >
           Name<fa-icon
             class="sort-icon ml-1"
@@ -32,17 +33,19 @@
           ></fa-icon>
         </th>
         <th
+          tabindex="0"
           (click)="sort('map_type')"
           scope="col"
-          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200 focus:bg-neutral-200 focus:outline focus:outline-1 focus:outline-blue-300"
         >
           Style
           <fa-icon class="sort-icon ml-1" size="lg" [icon]="faSort"></fa-icon>
         </th>
         <th
+          tabindex="0"
           (click)="sort('map_tier')"
           scope="col"
-          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200 focus:bg-neutral-200 focus:outline focus:outline-1 focus:outline-blue-300"
         >
           Tier<fa-icon
             class="sort-icon ml-1"
@@ -57,9 +60,10 @@
           Notes
         </th>
         <th
+          tabindex="0"
           (click)="sort('map_completed')"
           scope="col"
-          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200 focus:bg-neutral-200 focus:outline focus:outline-1 focus:outline-blue-300"
         >
           Status<fa-icon
             class="sort-icon ml-1"
@@ -92,11 +96,17 @@
             {{ map.map_notes }}
           </td>
           <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
-            <span class="completed-badge">Completed</span>
+            <span
+              class="rounded-full bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-300"
+              >Completed</span
+            >
           </td>
           <ng-template #project
             ><td class="px-3 py-1">
-              <span class="project-badge">Project</span>
+              <span
+                class="rounded-full bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-300"
+                >Project</span
+              >
             </td></ng-template
           >
           <td class="py-1">
