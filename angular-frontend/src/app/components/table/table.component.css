@@ -14,14 +14,10 @@
   max-height: 500px;
 }
 
-th {
-  @apply sticky top-0 text-neutral-800 bg-neutral-300;
-}
-
 .completed-badge {
-  @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-900 text-green-300;
+  @apply rounded-full bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-300;
 }
 
 .project-badge {
-  @apply text-xs font-medium  px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300;
+  @apply rounded-full bg-yellow-900  px-2.5 py-0.5 text-xs font-medium text-yellow-300;
 }

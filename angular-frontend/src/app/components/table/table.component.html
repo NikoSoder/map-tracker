@@ -1,6 +1,6 @@
-<div class="flex flex-col sm:flex-row sm:justify-between mb-2">
+<div class="mb-2 flex flex-col sm:flex-row sm:justify-between">
   <div class="mb-1 sm:mb-0">
-    <h2 class="text-neutral-300 text-2xl">Your maps</h2>
+    <h2 class="text-2xl text-neutral-300">Your maps</h2>
   </div>
   <div class="relative">
     <div class="absolute inset-y-0 left-0 flex items-center p-2">
@@ -8,7 +8,7 @@
     </div>
     <input
       type="text"
-      class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
+      class="rounded border border-neutral-500 bg-zinc-700 py-1 pl-8 text-neutral-300 outline-none hover:border-neutral-400 focus:border-neutral-200"
       placeholder="Search"
       #input
       (keyup)="onSearch(input.value)"
@@ -17,43 +17,67 @@
 </div>
 
 <div class="table-container overflow-x-auto overflow-y-auto">
-  <table class="border-collapse w-full">
+  <table class="w-full border-collapse">
     <thead>
       <tr class="text-left">
-        <th (click)="sort('map_name')" scope="col" class="pl-3 py-2">
+        <th
+          (click)="sort('map_name')"
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-200"
+        >
           Name<fa-icon
             class="sort-icon ml-1"
             size="lg"
             [icon]="faSort"
           ></fa-icon>
         </th>
-        <th (click)="sort('map_type')" scope="col" class="pl-3 py-2">
+        <th
+          (click)="sort('map_type')"
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+        >
           Style
           <fa-icon class="sort-icon ml-1" size="lg" [icon]="faSort"></fa-icon>
         </th>
-        <th (click)="sort('map_tier')" scope="col" class="pl-3 py-2">
+        <th
+          (click)="sort('map_tier')"
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+        >
           Tier<fa-icon
             class="sort-icon ml-1"
             size="lg"
             [icon]="faSort"
           ></fa-icon>
         </th>
-        <th scope="col" class="pl-3 py-2">Notes</th>
-        <th (click)="sort('map_completed')" scope="col" class="pl-3 py-2">
+        <th
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+        >
+          Notes
+        </th>
+        <th
+          (click)="sort('map_completed')"
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+        >
           Status<fa-icon
             class="sort-icon ml-1"
             size="lg"
             [icon]="faSort"
           ></fa-icon>
         </th>
-        <th scope="col" class="pl-3 py-2"></th>
+        <th
+          scope="col"
+          class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+        ></th>
       </tr>
     </thead>
     <tbody class="bg-zinc-800 text-neutral-200">
       <ng-container *ngFor="let map of maps">
         <tr
           *ngIf="map.map_name.includes(searchInput)"
-          class="hover:bg-zinc-700 border-b border-neutral-500"
+          class="border-b border-neutral-500 hover:bg-zinc-700"
         >
           <td class="px-3 py-1">
             {{ map.map_name }}
@@ -78,7 +102,7 @@
           <td class="py-1">
             <a
               routerLink="/detail/{{ map.id }}"
-              class="text-blue-500 font-semibold hover:underline"
+              class="font-semibold text-blue-500 hover:underline"
               >Edit</a
             >
           </td>
