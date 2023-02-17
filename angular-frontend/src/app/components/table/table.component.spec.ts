@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableComponent } from './table.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('TableComponent', () => {
   let component: TableComponent;
@@ -8,9 +9,9 @@ describe('TableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableComponent ]
-    })
-    .compileComponents();
+      imports: [FontAwesomeModule],
+      declarations: [TableComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TableComponent);
     component = fixture.componentInstance;
