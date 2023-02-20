@@ -18,6 +18,33 @@ const pool = mariadb.createPool({
   connectionLimit: 5,
 });
 
+// create database and table
+(async () => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    console.log("Connected to MariaDB!");
+
+    await conn.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
+    console.log("Database created");
+
+    await conn.query(`USE ${process.env.DB_NAME}`);
+    console.log("Using database");
+
+    await conn.query(
+      `CREATE TABLE IF NOT EXISTS ${process.env.TABLE_NAME} (id INT NOT NULL AUTO_INCREMENT, map_name CHAR(40) NOT NULL,map_type CHAR(10) NOT NULL,map_tier INT NOT NULL,map_notes CHAR(30),map_completed BOOLEAN NOT NULL,PRIMARY KEY (id))`
+    );
+    console.log("Table created");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (conn) {
+      conn.release();
+      console.log("Connection closed");
+    }
+  }
+})();
+
 //get all data
 app.get("/", async (req, res) => {
   let conn;
