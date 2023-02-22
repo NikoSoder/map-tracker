@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      - DB_HOST=localhost
+      - DB_USER=root
+      - TABLE_NAME=maps
+      - MARIADB_ROOT_PASSWORD=password
+      - MARIADB_DATABASE=surf
+    volumes:
+      - mariadb-db:/var/lib/mysql
+
+  node-express:
+    depends_on:
+      - mariadb
+    build: ./node-express
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=mariadb
+
+  frontend:
+    build: ./angular-frontend
+    ports:
+      - "80:80"
+    expose:
+      - "80"
+
+volumes:
+  mariadb-db:
