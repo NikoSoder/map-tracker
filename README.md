@@ -10,7 +10,7 @@
 
 ## Introduction
 
-TODO: description about the project
+Map tracker for Counter-Strike surf mode. Track your completed maps and projects.
 
 ## Demo video
 
@@ -29,20 +29,6 @@ $ npm install
 ```
 
 2.Create your own .env file in `node-express` folder. Check in `.env-sample` for a sample.
-
-3.Create your database and table. You can check in `create_table_example` for a sample.
-
-```sql
-CREATE TABLE table_name (
-     map_id INT NOT NULL AUTO_INCREMENT,
-     map_name CHAR(40) NOT NULL,
-     map_type CHAR(10) NOT NULL,
-     map_tier INT NOT NULL,
-     map_notes CHAR(30),
-     map_completed BOOLEAN NOT NULL,
-     PRIMARY KEY (map_id)
- );
-```
 
 ## Technologies used
 
