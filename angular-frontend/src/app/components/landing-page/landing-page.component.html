@@ -1,1 +1,51 @@
-<p>landing-page works!</p>
+<div class="h-96 bg-gradient-to-b from-zinc-800 to-zinc-900">
+  <div class="container mx-auto text-neutral-200">
+    <div class="flex flex-col items-center gap-4">
+      <div class="mb-4">
+        <h2 class="text-3xl">
+          Track your Counter-Strike
+          <span class="font-medium text-orange-400">surf maps</span>
+        </h2>
+      </div>
+
+      <div class="mb-4 flex flex-col gap-2 text-neutral-300">
+        <div class="flex flex-row gap-2">
+          <fa-icon [icon]="faCheck"></fa-icon>
+          <p>Add completed maps</p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <fa-icon [icon]="faCheck"></fa-icon>
+          <p>Add projects</p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <fa-icon [icon]="faCheck"></fa-icon>
+          <p>Track your statistics</p>
+        </div>
+      </div>
+      <div>
+        <button
+          routerLink="/dashboard"
+          class="rounded bg-yellow-500 px-5 py-3 text-lg font-medium text-black hover:bg-amber-300"
+        >
+          GET STARTED
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-zinc-900 text-neutral-200">
+  <div class="container mx-auto flex flex-col items-center gap-3">
+    <div>
+      <h3 class="text-3xl">Build with</h3>
+    </div>
+    <div>
+      <ul class="flex flex-row gap-4 text-lg font-medium text-amber-500">
+        <li><a href="#">Angular</a></li>
+        <li><a href="#">Tailwind</a></li>
+        <li><a href="#">Node</a></li>
+        <li><a href="#">Express</a></li>
+        <li><a href="#">Mariadb</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
