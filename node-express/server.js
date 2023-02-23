@@ -13,8 +13,8 @@ dotenv.config({ path: ".env" });
 const pool = mariadb.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  password: process.env.MARIADB_ROOT_PASSWORD,
+  database: process.env.MARIADB_DATABASE,
   connectionLimit: 5,
 });
 
@@ -25,10 +25,12 @@ const pool = mariadb.createPool({
     conn = await pool.getConnection();
     console.log("Connected to MariaDB!");
 
-    await conn.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
+    await conn.query(
+      `CREATE DATABASE IF NOT EXISTS ${process.env.MARIADB_DATABASE}`
+    );
     console.log("Database created");
 
-    await conn.query(`USE ${process.env.DB_NAME}`);
+    await conn.query(`USE ${process.env.MARIADB_DATABASE}`);
     console.log("Using database");
 
     await conn.query(
