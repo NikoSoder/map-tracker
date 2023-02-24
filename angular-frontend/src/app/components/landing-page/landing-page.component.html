@@ -1,4 +1,4 @@
-<div class="h-96 bg-gradient-to-b from-zinc-800 to-zinc-900">
+<div class="bg-gradient-to-b from-zinc-800 to-zinc-900">
   <div class="container mx-auto text-neutral-200">
     <div class="flex flex-col items-center gap-4">
       <div class="mb-4">
@@ -8,21 +8,21 @@
         </h2>
       </div>
 
-      <div class="mb-4 flex flex-col gap-2 text-neutral-300">
+      <div class="mb-4 flex flex-col gap-2 text-lg text-neutral-300">
         <div class="flex flex-row gap-2">
-          <fa-icon [icon]="faCheck"></fa-icon>
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
           <p>Add completed maps</p>
         </div>
         <div class="flex flex-row gap-2">
-          <fa-icon [icon]="faCheck"></fa-icon>
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
           <p>Add projects</p>
         </div>
         <div class="flex flex-row gap-2">
-          <fa-icon [icon]="faCheck"></fa-icon>
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
           <p>Track your statistics</p>
         </div>
       </div>
-      <div>
+      <div class="mb-12">
         <button
           routerLink="/dashboard"
           class="rounded bg-yellow-500 px-5 py-3 text-lg font-medium text-black hover:bg-amber-300"
@@ -30,22 +30,104 @@
           GET STARTED
         </button>
       </div>
+      <div class="border-b-2 border-amber-300">
+        <h3 class="text-3xl">Build with</h3>
+      </div>
+      <div>
+        <ul class="flex flex-row gap-4 text-lg font-medium text-neutral-300">
+          <li class="hover:text-amber-600"><a href="#">Angular</a></li>
+          <li class="hover:text-amber-600"><a href="#">Tailwind</a></li>
+          <li class="hover:text-amber-600"><a href="#">Node</a></li>
+          <li class="hover:text-amber-600"><a href="#">Express</a></li>
+          <li class="hover:text-amber-600"><a href="#">Mariadb</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-<div class="bg-zinc-900 text-neutral-200">
-  <div class="container mx-auto flex flex-col items-center gap-3">
-    <div>
+<!-- <div class="flex h-80 items-center bg-zinc-900 text-neutral-200">
+  <div class="container mx-auto flex flex-col items-center gap-5">
+    <div class="border-b-2 border-amber-300">
       <h3 class="text-3xl">Build with</h3>
     </div>
     <div>
-      <ul class="flex flex-row gap-4 text-lg font-medium text-amber-500">
-        <li><a href="#">Angular</a></li>
-        <li><a href="#">Tailwind</a></li>
-        <li><a href="#">Node</a></li>
-        <li><a href="#">Express</a></li>
-        <li><a href="#">Mariadb</a></li>
+      <ul class="flex flex-row gap-4 text-lg font-medium text-neutral-300">
+        <li class="hover:text-amber-600"><a href="#">Angular</a></li>
+        <li class="hover:text-amber-600"><a href="#">Tailwind</a></li>
+        <li class="hover:text-amber-600"><a href="#">Node</a></li>
+        <li class="hover:text-amber-600"><a href="#">Express</a></li>
+        <li class="hover:text-amber-600"><a href="#">Mariadb</a></li>
       </ul>
     </div>
   </div>
+</div> -->
+<div class="bg-gradient-to-b from-zinc-900 to-zinc-800 py-72">
+  <div
+    class="container mx-auto flex flex-col items-center justify-center gap-10 text-neutral-200"
+  >
+    <div class="border-b-2 border-amber-300 text-center">
+      <h2 class="text-3xl text-neutral-100">How it works</h2>
+    </div>
+    <div class="flex w-full flex-row justify-around">
+      <div class="flex items-center">
+        <h2 class="text-3xl">Add maps to your user</h2>
+      </div>
+      <div class="block max-w-xs">
+        <img class="w-full" src="https://via.placeholder.com/300" alt="" />
+      </div>
+    </div>
+    <div class="flex w-full flex-row justify-around">
+      <div class="block max-w-xs">
+        <img class="w-full" src="https://via.placeholder.com/300" alt="" />
+      </div>
+      <div class="flex items-center">
+        <h2 class="text-3xl">View your maps in the dashboard</h2>
+      </div>
+    </div>
+    <div class="flex w-full flex-row justify-around">
+      <div class="flex items-center">
+        <h2 class="text-3xl">Edit maps easile</h2>
+      </div>
+      <div class="block max-w-xs">
+        <img class="w-full" src="https://via.placeholder.com/300" alt="" />
+      </div>
+    </div>
+  </div>
 </div>
+<footer class="h-72 bg-zinc-900 text-neutral-100">
+  <div
+    class="container mx-auto flex h-full flex-row items-center justify-around"
+  >
+    <div class="leading-6">
+      <h2 class="font mb-3 text-3xl">Map Tracker</h2>
+      <p class="text-neutral-300">Designed and build by Niko Söder.</p>
+      <p class="text-neutral-300">
+        Feel free to contribute
+        <a class="text-blue-400" href="https://github.com/NikoSoder/map-tracker"
+          >here</a
+        >.
+      </p>
+    </div>
+    <div>
+      <ul class="flex flex-col gap-2">
+        <li class="mb-2 text-2xl">Links</li>
+        <li class="text-neutral-300 hover:text-blue-300">
+          <fa-icon
+            class="footer-logo pr-2"
+            [icon]="faGithub"
+            size="lg"
+          ></fa-icon>
+          <a href="https://github.com/NikoSoder" target="_blank">Github</a>
+        </li>
+        <li class="text-neutral-300 hover:text-blue-300">
+          <fa-icon
+            class="footer-logo pr-2"
+            [icon]="faLinkedin"
+            size="lg"
+          ></fa-icon>
+          <a href="#">Linkedin</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
