@@ -1,3 +1,4 @@
+<!-- main section -->
 <div class="bg-gradient-to-b from-zinc-800 to-zinc-900">
   <div class="container mx-auto text-neutral-200">
     <div class="flex flex-col items-center gap-4">
@@ -7,7 +8,7 @@
           <span class="font-medium text-orange-400">surf maps</span>
         </h2>
       </div>
-
+      <!-- checkmark features -->
       <div class="mb-4 flex flex-col gap-2 text-lg text-neutral-300">
         <div class="flex flex-row gap-2">
           <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
@@ -30,6 +31,7 @@
           GET STARTED
         </button>
       </div>
+      <!-- main picture  -->
       <figure class="mb-12 block max-w-2xl">
         <img
           class="max-w-full"
@@ -40,21 +42,45 @@
       <div class="border-b-2 border-amber-300">
         <h3 class="text-3xl">Build with</h3>
       </div>
-      <div>
-        <ul
-          class="flex flex-col gap-4 text-lg font-medium text-neutral-300 sm:flex-row"
-        >
-          <li class="hover:text-amber-600"><a href="#">Angular</a></li>
-          <li class="hover:text-amber-600"><a href="#">Tailwind</a></li>
-          <li class="hover:text-amber-600"><a href="#">Node</a></li>
-          <li class="hover:text-amber-600"><a href="#">Express</a></li>
-          <li class="hover:text-amber-600"><a href="#">Mariadb</a></li>
-        </ul>
+      <!-- build with logos -->
+      <div class="flex flex-col gap-10 md:flex-row">
+        <div class="flex flex-row items-center gap-10">
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png"
+              alt=""
+            />
+          </figure>
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png"
+              alt=""
+            />
+          </figure>
+        </div>
+        <div class="flex flex-row items-center gap-10">
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399__480.png"
+              alt=""
+            />
+          </figure>
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png"
+              alt=""
+            />
+          </figure>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
+<!-- features section -->
 <div class="bg-gradient-to-b from-zinc-900 to-zinc-800 py-72">
   <div class="container mx-auto text-neutral-200">
     <div class="mb-12 border-b-2 border-amber-300 text-center">
@@ -105,6 +131,7 @@
     </div>
   </div>
 </div>
+<!-- footer -->
 <footer class="h-72 bg-zinc-900 text-neutral-100">
   <div
     class="container mx-auto flex h-full flex-row items-center justify-around"
