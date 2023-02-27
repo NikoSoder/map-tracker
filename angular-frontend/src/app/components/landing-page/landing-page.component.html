@@ -2,6 +2,7 @@
 <div class="bg-gradient-to-b from-zinc-800 to-zinc-900">
   <div class="container mx-auto text-neutral-200">
     <div class="flex flex-col items-center gap-4">
+      <!-- main title -->
       <div class="mb-4 text-center">
         <h2 class="text-3xl">
           Track your Counter-Strike
@@ -9,7 +10,7 @@
         </h2>
       </div>
       <!-- checkmark features -->
-      <div class="mb-4 flex flex-col gap-2 text-lg text-neutral-300">
+      <div class="mb-4 flex flex-col gap-2 text-lg text-gray-300">
         <div class="flex flex-row gap-2">
           <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
           <p>Add completed maps</p>
@@ -83,46 +84,55 @@
 <!-- features section -->
 <div class="bg-gradient-to-b from-zinc-900 to-zinc-800 py-72">
   <div class="container mx-auto text-neutral-200">
+    <!-- feature title -->
     <div class="mb-12 border-b-2 border-amber-300 text-center">
       <h2 class="text-3xl text-neutral-100">Features</h2>
     </div>
-    <div class="mb-20 flex flex-col gap-10 lg:flex-row lg:justify-between">
-      <div class="flex flex-col gap-5 border-b border-neutral-500 text-lg">
-        <figure class="block max-w-3xl">
-          <img
-            class="max-w-full"
-            src="../../../assets/images/sorting.png"
-            alt="Sorting feature"
-          />
-        </figure>
-        <div>
-          <p>Sort table column by name, style, tier or status</p>
+    <!-- feature cards -->
+    <div class="flex flex-col items-center gap-36">
+      <div
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow transition duration-300 ease-in-out hover:scale-110 hover:bg-yellow-900"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/sorting.png"
+          alt="sorting feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">
+            Sorting feature
+          </h3>
+          <p class="mb-3 text-lg text-gray-400">
+            Sort maps by name, style, tier or status
+          </p>
         </div>
       </div>
-      <div class="flex flex-col gap-5 border-b border-neutral-500 text-lg">
-        <figure class="block max-w-2xl">
-          <img
-            class="max-w-full"
-            src="../../../assets/images/search.png"
-            alt="Search feature"
-          />
-        </figure>
-        <div>
-          <p>Search maps with search input field</p>
+      <div
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow transition duration-300 ease-in-out hover:scale-110 hover:bg-yellow-900"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/search.png"
+          alt="search feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">
+            Search feature
+          </h3>
+          <p class="mb-3 text-lg text-gray-400">Search maps by map names</p>
         </div>
       </div>
-    </div>
-    <div class="flex">
-      <div class="flex flex-col gap-5 border-b border-neutral-500 text-lg">
-        <figure class="block max-w-xl">
-          <img
-            class="max-w-full"
-            src="../../../assets/images/edit.png"
-            alt="Edit feature"
-          />
-        </figure>
-        <div>
-          <p>
+      <div
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow transition duration-300 ease-in-out hover:scale-110 hover:bg-yellow-900"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/edit.png"
+          alt="edit feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">Edit feature</h3>
+          <p class="mb-3 text-lg text-gray-400">
             Edit maps easile. You can delete map, mark it as completed or update
             your notes
           </p>
