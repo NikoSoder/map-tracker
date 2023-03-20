@@ -1,0 +1,190 @@
+<!-- main section -->
+<div class="bg-gradient-to-b from-zinc-800 to-zinc-900">
+  <div class="container mx-auto text-neutral-200">
+    <div class="wrapper-animation flex flex-col items-center gap-4">
+      <!-- main title -->
+      <div class="mb-4 text-center">
+        <h2 class="text-3xl">
+          Track your Counter-Strike
+          <span class="font-medium text-orange-400">surf maps</span>
+        </h2>
+      </div>
+      <!-- checkmark features -->
+      <div class="mb-4 flex flex-col gap-2 text-lg text-gray-300">
+        <div class="flex flex-row gap-2">
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
+          <p>Add completed maps</p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
+          <p>Add projects</p>
+        </div>
+        <div class="flex flex-row gap-2">
+          <fa-icon class="checkmark" [icon]="faCheck"></fa-icon>
+          <p>Track your statistics</p>
+        </div>
+      </div>
+      <div class="mb-12">
+        <button
+          routerLink="/dashboard"
+          class="rounded bg-yellow-500 px-5 py-3 text-lg font-medium text-black hover:bg-amber-300"
+        >
+          GET STARTED
+        </button>
+      </div>
+      <!-- main picture  -->
+      <figure class="mb-12 block max-w-2xl">
+        <img
+          class="max-w-full"
+          src="../../../assets/images/dashboard.png"
+          alt="Dashboard image"
+        />
+      </figure>
+      <div class="border-b-2 border-amber-300">
+        <h3 class="text-3xl">Build with</h3>
+      </div>
+      <!-- build with logos -->
+      <div class="flex flex-col gap-10 md:flex-row">
+        <div class="flex flex-row items-center gap-10">
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png"
+              alt=""
+            />
+          </figure>
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png"
+              alt=""
+            />
+          </figure>
+        </div>
+        <div class="flex flex-row items-center gap-10">
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://cdn.pixabay.com/photo/2015/04/23/17/41/node-js-736399__480.png"
+              alt=""
+            />
+          </figure>
+          <figure class="block w-32">
+            <img
+              class="max-w-full"
+              src="https://mariadb.com/wp-content/uploads/2019/11/mariadb-logo-vert_blue-transparent.png"
+              alt=""
+            />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- features section -->
+<div class="bg-gradient-to-b from-zinc-900 to-zinc-800 py-72">
+  <div class="container mx-auto text-neutral-200">
+    <!-- feature title -->
+    <div class="mb-12 border-b-2 border-amber-300 text-center">
+      <h2 class="text-3xl text-neutral-100">Features</h2>
+    </div>
+    <!-- feature cards -->
+    <div class="flex flex-col items-center gap-36">
+      <div
+        data-aos="fade-right"
+        data-aos-duration="2000"
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/sorting.png"
+          alt="sorting feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">
+            Sorting feature
+          </h3>
+          <p class="mb-3 text-lg text-gray-400">
+            Sort maps by name, style, tier or status
+          </p>
+        </div>
+      </div>
+      <div
+        data-aos="fade-left"
+        data-aos-duration="2000"
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/search.png"
+          alt="search feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">
+            Search feature
+          </h3>
+          <p class="mb-3 text-lg text-gray-400">Search maps by map names</p>
+        </div>
+      </div>
+      <div
+        data-aos="fade-right"
+        data-aos-duration="2000"
+        class="max-w-xl rounded-lg border border-zinc-600 bg-zinc-900 shadow"
+      >
+        <img
+          class="rounded-t-lg"
+          src="../../../assets/images/edit.png"
+          alt="edit feature picture"
+        />
+        <div class="p-5">
+          <h3 class="mb-2 text-2xl font-bold text-neutral-200">Edit feature</h3>
+          <p class="mb-3 text-lg text-gray-400">
+            Edit maps easile. You can delete map, mark it as completed or update
+            your notes
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<footer class="h-72 bg-zinc-900 text-neutral-100">
+  <div
+    class="container mx-auto flex h-full flex-row items-center justify-around"
+  >
+    <div class="leading-6">
+      <h2 class="font mb-3 text-3xl">Map Tracker</h2>
+      <p class="text-neutral-300">Designed and build by Niko Söder.</p>
+      <p class="text-neutral-300">
+        Feel free to contribute
+        <a
+          class="text-blue-400"
+          target="_blank"
+          href="https://github.com/NikoSoder/map-tracker"
+          >here</a
+        >.
+      </p>
+    </div>
+    <div>
+      <ul class="flex flex-col gap-2">
+        <li class="mb-2 text-2xl">Links</li>
+        <li class="text-neutral-300 hover:text-blue-300">
+          <fa-icon
+            class="footer-logo pr-2"
+            [icon]="faGithub"
+            size="lg"
+          ></fa-icon>
+          <a href="https://github.com/NikoSoder" target="_blank">Github</a>
+        </li>
+        <li class="text-neutral-300 hover:text-blue-300">
+          <fa-icon
+            class="footer-logo pr-2"
+            [icon]="faLinkedin"
+            size="lg"
+          ></fa-icon>
+          <a href="#">Linkedin</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

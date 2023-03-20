@@ -1,33 +1,33 @@
-<div *ngIf="map" class="container mx-auto md:flex md:justify-center">
-  <div class="wrapper-animation px-2 text-neutral-200 md:w-3/5 lg:w-2/5">
-    <div class="mb-3 rounded border-2 border-neutral-600 bg-zinc-700 p-3">
-      <h2 class="mb-2 text-2xl text-neutral-100">Map details</h2>
-      <p class="mb-1">
-        Map name: <span>{{ map.map_name }}</span>
-      </p>
-      <p class="mb-1">
-        Map type: <span>{{ map.map_type }}</span>
-      </p>
-      <p class="mb-4">
-        Map tier: <span>{{ map.map_tier }}</span>
-      </p>
+<div *ngIf="map" class="container mx-auto flex justify-center p-2">
+  <div
+    class="wrapper-animation max-w-md grow rounded-lg border border-zinc-600 bg-zinc-900 p-6 shadow-md"
+  >
+    <!-- map info -->
+    <div>
+      <h4 class="mb-4 text-3xl font-bold text-neutral-200">
+        {{ map.map_name }}
+      </h4>
+      <ul class="mb-3 text-gray-400">
+        <li>map type: {{ map.map_type }}</li>
+        <li>map tier: {{ map.map_tier }}</li>
+      </ul>
       <button
         (click)="onDelete(map)"
-        class="mr-3 mb-2 rounded bg-red-500 py-1 px-3 font-semibold text-neutral-50 hover:bg-red-600"
+        class="mr-3 mb-2 rounded bg-red-500 py-1 px-3 text-sm text-neutral-200 hover:bg-red-600"
       >
         <fa-icon [icon]="faTrash"></fa-icon> Delete
       </button>
       <button
         *ngIf="map.map_completed === 0"
         (click)="onCompleted(map)"
-        class="mb-2 rounded border border-green-300 py-1 px-3 font-semibold text-green-300 hover:border-green-200 hover:bg-green-100 hover:text-green-800"
+        class="mb-2 rounded border border-green-300 py-1 px-3 text-sm text-green-300 hover:border-green-200 hover:bg-green-300 hover:text-green-800"
       >
         <fa-icon [icon]="faCheckCircle"></fa-icon> Complete
       </button>
     </div>
-    <div
-      class="mb-2 w-full rounded border-2 border-neutral-600 bg-zinc-700 p-3"
-    >
+    <hr class="my-8 h-px border-0 bg-gray-500" />
+    <!-- update note -->
+    <div>
       <label class="mb-2 block font-bold text-neutral-200" for="notes">
         Update your notes
       </label>
@@ -35,21 +35,13 @@
         id="notes"
         #notes
         [value]="map.map_notes"
-        class="mb-3 w-full rounded border border-neutral-500 bg-zinc-700 p-2 focus:border-neutral-300 focus:shadow focus:shadow-neutral-700 focus:outline-none"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 text-neutral-200 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
       ></textarea>
       <button
         (click)="updateNotes(map, notes.value)"
-        class="mb-2 rounded bg-blue-600 py-2 px-4 font-bold text-white hover:bg-blue-700"
+        class="mb-2 rounded bg-blue-600 py-1 px-3 text-sm text-white hover:bg-blue-700"
       >
         Update
-      </button>
-    </div>
-    <div>
-      <button
-        class="rounded border-2 border-neutral-500 bg-none py-1 px-2 font-semibold hover:bg-zinc-600"
-        (click)="goBack()"
-      >
-        <fa-icon [icon]="faArrowLeft"></fa-icon>
       </button>
     </div>
   </div>
