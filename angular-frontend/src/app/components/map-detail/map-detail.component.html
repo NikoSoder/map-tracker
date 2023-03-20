@@ -2,11 +2,23 @@
   <div
     class="wrapper-animation max-w-md grow rounded-lg border border-zinc-600 bg-zinc-900 p-6 shadow-md"
   >
-    <!-- map info -->
     <div>
-      <h4 class="mb-4 text-3xl font-bold text-neutral-200">
-        {{ map.map_name }}
-      </h4>
+      <!-- map name and back button -->
+      <div class="mb-4 flex justify-between">
+        <div>
+          <h4 class="text-3xl font-bold text-neutral-200">
+            {{ map.map_name }}
+          </h4>
+        </div>
+        <div>
+          <button
+            class="rounded border border-zinc-600 bg-none py-1 px-2 font-semibold hover:bg-zinc-700"
+            (click)="goBack()"
+          >
+            <fa-icon class="text-neutral-200" [icon]="faArrowLeft"></fa-icon>
+          </button>
+        </div>
+      </div>
       <ul class="mb-3 text-gray-400">
         <li>map type: {{ map.map_type }}</li>
         <li>map tier: {{ map.map_tier }}</li>
