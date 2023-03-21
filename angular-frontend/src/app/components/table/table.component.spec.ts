@@ -32,4 +32,20 @@ describe('TableComponent', () => {
     component.onSearch('second test');
     expect(component.searchInput).toBe('second test');
   });
+
+  it('should reset messages and change showModal', () => {
+    component.errormsg = 'Error';
+    expect(component.errormsg).toBe('Error');
+
+    component.successmsg = 'Success';
+    component.toggleFormModal();
+    fixture.detectChanges();
+
+    expect(component.errormsg).toBe('');
+    expect(component.successmsg).toBe('');
+    expect(component.showModal).toBe(true);
+
+    component.toggleFormModal();
+    expect(component.showModal).toBe(false);
+  });
 });
