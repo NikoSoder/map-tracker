@@ -1,6 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
-import { faSearch, faSort, faPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSearch,
+  faSort,
+  faPlus,
+  faCheck,
+  faExclamationTriangle,
+} from '@fortawesome/free-solid-svg-icons';
+import { faMixer } from '@fortawesome/free-brands-svg-icons';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-table',
@@ -8,6 +17,12 @@ import { faSearch, faSort, faPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
+  errormsg = '';
+  successmsg = '';
+  showModal = false;
+  faMixer = faMixer;
+  faExclamationTriangle = faExclamationTriangle;
+  faCheck = faCheck;
   sortField = 'name';
   sortOrder = 'asc';
   searchInput = '';
@@ -15,7 +30,7 @@ export class TableComponent implements OnInit {
   faSort = faSort;
   faPlus = faPlus;
   @Input() maps!: Map[];
-  constructor() {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {}
 
@@ -48,5 +63,48 @@ export class TableComponent implements OnInit {
 
   onSearch(input: string) {
     this.searchInput = input;
+  }
+
+  toggleFormModal() {
+    this.successmsg = '';
+    this.errormsg = '';
+    this.showModal = !this.showModal;
+  }
+
+  public mapForm = new FormGroup({
+    map_name: new FormControl('', [
+      Validators.required,
+      Validators.maxLength(20),
+    ]),
+    map_type: new FormControl('linear', Validators.required),
+    map_tier: new FormControl('', [Validators.required, Validators.max(8)]),
+    map_notes: new FormControl('', Validators.maxLength(20)),
+    map_completed: new FormControl(false),
+  });
+
+  onSubmit() {
+    this.successmsg = '';
+    this.errormsg = '';
+    const form = this.mapForm.value;
+    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
+      maps = maps.filter((map) => map.map_name === form.map_name);
+
+      if (maps.length) {
+        this.errormsg = 'Map is already added';
+        return;
+      }
+      this.apiService.createMap(form).subscribe((res) => {
+        console.log(res);
+        this.successmsg = 'Map added';
+      });
+    });
+
+    this.mapForm.reset({
+      map_name: '',
+      map_type: 'linear',
+      map_tier: '',
+      map_notes: '',
+      map_completed: false,
+    });
   }
 }
