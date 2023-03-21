@@ -90,12 +90,19 @@ app.post("/", async (req, res) => {
       `INSERT INTO ${process.env.TABLE_NAME} (map_name, map_type, map_tier, map_notes, map_completed) VALUES (?,?,?,?,?)`,
       [map_name, map_type, map_tier, map_notes, map_completed]
     );
+    /* const serializedResult = JSON.stringify(result, (key, value) =>
+      typeof value === "bigint" ? value.toString() : value
+    ); */
 
-    // const test = JSON.stringify(result, (key, value) =>
-    //   typeof value === "bigint" ? value.toString() + "n" : value
-    // );
-
-    res.status(200).json({ message: "data inserted" });
+    const newMap = {
+      id: Number(result.insertId),
+      map_name,
+      map_type,
+      map_tier,
+      map_notes,
+      map_completed,
+    };
+    res.status(200).json(newMap);
   } catch (e) {
     res.status(400).send(e.message);
   } finally {
