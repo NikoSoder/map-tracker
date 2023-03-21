@@ -22,4 +22,14 @@ describe('TableComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should change searchInput', () => {
+    component.onSearch('test');
+    expect(component.searchInput).toBe('test');
+  });
+
+  it('should change searchInput again', () => {
+    component.onSearch('second test');
+    expect(component.searchInput).toBe('second test');
+  });
 });
