@@ -1,6 +1,11 @@
 <div class="mb-2 flex flex-col sm:flex-row sm:justify-between">
-  <div class="mb-1 sm:mb-0">
+  <div class="mb-1 flex gap-4 sm:mb-0">
     <h2 class="text-2xl font-medium text-neutral-300">Your maps</h2>
+    <div class="text-neutral-200">
+      <button class="rounded bg-green-600 py-1 px-4 hover:bg-green-700">
+        <fa-icon [icon]="faPlus"></fa-icon> New
+      </button>
+    </div>
   </div>
   <div class="relative">
     <div class="absolute inset-y-0 left-0 flex items-center p-2">
