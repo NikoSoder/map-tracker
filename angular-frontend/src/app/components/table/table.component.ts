@@ -29,8 +29,11 @@ export class TableComponent implements OnInit {
   faSearch = faSearch;
   faSort = faSort;
   faPlus = faPlus;
-  @Input() maps!: Map[];
-  constructor(private apiService: ApiService) {}
+  @Input() maps: Map[];
+
+  constructor(private apiService: ApiService) {
+    this.maps = [];
+  }
 
   ngOnInit(): void {}
 
