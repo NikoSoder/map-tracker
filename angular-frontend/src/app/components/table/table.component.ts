@@ -87,26 +87,27 @@ export class TableComponent implements OnInit {
     this.errormsg = '';
     const form = this.mapForm.value;
 
-    /* here maybe insted just check if this.maps array has same map name as form.map_name */
-    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
-      maps = maps.filter((map) => map.map_name === form.map_name);
+    /* check if map is already added */
+    const isMapAlreadyAdded: boolean = this.maps.some(
+      (obj) => obj.map_name === form.map_name
+    );
 
-      if (maps.length) {
-        this.errormsg = 'Map is already added';
-        return;
-      }
-      this.apiService.createMap(form).subscribe((res) => {
-        console.log(res);
-        this.maps.push(res);
+    if (isMapAlreadyAdded) {
+      this.errormsg = 'Map is already added';
+      return;
+    }
 
-        this.successmsg = 'Map added';
-        this.mapForm.reset({
-          map_name: '',
-          map_type: 'linear',
-          map_tier: '',
-          map_notes: '',
-          map_completed: false,
-        });
+    this.apiService.createMap(form).subscribe((res) => {
+      console.log(res);
+      this.maps.push(res);
+
+      this.successmsg = 'Map added';
+      this.mapForm.reset({
+        map_name: '',
+        map_type: 'linear',
+        map_tier: '',
+        map_notes: '',
+        map_completed: false,
       });
     });
   }
