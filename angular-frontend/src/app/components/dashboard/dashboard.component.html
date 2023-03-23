@@ -1,15 +1,5 @@
-<div
-  *ngIf="userMaps.length; else noMaps"
-  class="wrapper-animation container mx-auto px-2 lg:flex lg:justify-center"
->
+<div class="wrapper-animation container mx-auto px-2 lg:flex lg:justify-center">
   <div class="lg:w-3/4">
     <app-table [maps]="userMaps"> </app-table>
   </div>
 </div>
-
-<ng-template #noMaps>
-  <h2 class="text-center text-3xl text-neutral-200 mb-1">No maps available</h2>
-  <p class="text-center text-neutral-300">
-    You can add maps to your account in the Add maps page
-  </p>
-</ng-template>

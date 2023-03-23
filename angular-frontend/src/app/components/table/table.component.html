@@ -1,74 +1,260 @@
-<div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-  <div class="mb-1 sm:mb-0">
-    <h2 class="text-neutral-300 text-2xl">Your maps</h2>
-  </div>
-  <div class="relative">
-    <div class="absolute inset-y-0 left-0 flex items-center p-2">
-      <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+<div *ngIf="maps.length; else noMaps">
+  <div class="mb-2 flex flex-col sm:flex-row sm:justify-between">
+    <div class="mb-1 flex gap-4 sm:mb-0">
+      <h2 class="text-2xl font-medium text-neutral-300">Your maps</h2>
+      <div class="text-neutral-200">
+        <button
+          (click)="toggleFormModal()"
+          class="rounded bg-green-600 py-1 px-4 hover:bg-green-700"
+        >
+          <fa-icon [icon]="faPlus"></fa-icon> New
+        </button>
+      </div>
     </div>
-    <input
-      type="text"
-      class="pl-8 py-1 rounded bg-zinc-700 hover:border-neutral-400 text-neutral-300 border border-neutral-500 focus:border-neutral-200 outline-none"
-      placeholder="Search"
-      #input
-      (keyup)="onSearch(input.value)"
-    />
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 flex items-center p-2">
+        <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+      </div>
+      <input
+        type="text"
+        class="rounded border border-neutral-500 bg-zinc-700 py-1 pl-8 text-neutral-300 outline-none hover:border-neutral-400 focus:border-neutral-200"
+        placeholder="Search"
+        #input
+        (keyup)="onSearch(input.value)"
+      />
+    </div>
+  </div>
+
+  <div class="table-container overflow-x-auto overflow-y-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="text-left">
+          <th
+            tabindex="0"
+            (click)="sort('map_name')"
+            scope="col"
+            class="sticky top-0 cursor-pointer bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100"
+          >
+            Name<fa-icon
+              class="sort-icon ml-1"
+              size="lg"
+              [icon]="faSort"
+            ></fa-icon>
+          </th>
+          <th
+            tabindex="0"
+            (click)="sort('map_type')"
+            scope="col"
+            class="sticky top-0 cursor-pointer bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100"
+          >
+            Style
+            <fa-icon class="sort-icon ml-1" size="lg" [icon]="faSort"></fa-icon>
+          </th>
+          <th
+            tabindex="0"
+            (click)="sort('map_tier')"
+            scope="col"
+            class="sticky top-0 cursor-pointer bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100"
+          >
+            Tier<fa-icon
+              class="sort-icon ml-1"
+              size="lg"
+              [icon]="faSort"
+            ></fa-icon>
+          </th>
+          <th
+            scope="col"
+            class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+          >
+            Notes
+          </th>
+          <th
+            tabindex="0"
+            (click)="sort('map_completed')"
+            scope="col"
+            class="sticky top-0 cursor-pointer bg-neutral-300 py-2 pl-3 text-neutral-800 hover:bg-neutral-100 focus:bg-neutral-100"
+          >
+            Status<fa-icon
+              class="sort-icon ml-1"
+              size="lg"
+              [icon]="faSort"
+            ></fa-icon>
+          </th>
+          <th
+            scope="col"
+            class="sticky top-0 bg-neutral-300 py-2 pl-3 text-neutral-800"
+          ></th>
+        </tr>
+      </thead>
+      <tbody class="bg-zinc-800 text-neutral-200">
+        <ng-container *ngFor="let map of maps">
+          <tr
+            *ngIf="map.map_name.includes(searchInput)"
+            class="border-b border-neutral-500 hover:bg-zinc-700"
+          >
+            <td class="px-3 py-1">
+              {{ map.map_name }}
+            </td>
+            <td class="px-3 py-1 text-neutral-400">
+              {{ map.map_type }}
+            </td>
+            <td class="px-3 py-1 text-neutral-400">
+              {{ map.map_tier }}
+            </td>
+            <td class="px-3 py-1 text-neutral-400">
+              {{ map.map_notes }}
+            </td>
+            <td
+              *ngIf="
+                map.map_completed === 1 || map.map_completed === true;
+                else project
+              "
+              class="px-3 py-1"
+            >
+              <span
+                class="rounded-full bg-green-900 px-2.5 py-0.5 text-xs font-medium text-green-300"
+                >Completed</span
+              >
+            </td>
+            <ng-template #project
+              ><td class="px-3 py-1">
+                <span
+                  class="rounded-full bg-yellow-900 px-2.5 py-0.5 text-xs font-medium text-yellow-300"
+                  >Project</span
+                >
+              </td></ng-template
+            >
+            <td class="py-1">
+              <a
+                routerLink="/detail/{{ map.id }}"
+                class="font-semibold text-blue-500 hover:underline"
+                >Edit</a
+              >
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </div>
 
-<div class="table-container overflow-x-auto overflow-y-auto">
-  <table class="border-collapse w-full">
-    <thead>
-      <tr class="text-left">
-        <th scope="col" class="pl-3 py-2">Name</th>
-        <th scope="col" class="pl-3 py-2">Style</th>
-        <th scope="col" class="pl-3 py-2">Tier</th>
-        <th scope="col" class="pl-3 py-2">Notes</th>
-        <th scope="col" class="pl-3 py-2">
-          Status<fa-icon
-            class="sort-icon ml-1"
-            size="lg"
-            [icon]="faSort"
-          ></fa-icon>
-        </th>
-        <th scope="col" class="pl-3 py-2"></th>
-      </tr>
-    </thead>
-    <tbody class="bg-zinc-800 text-neutral-200">
-      <ng-container *ngFor="let map of maps">
-        <tr
-          *ngIf="map.map_name.includes(searchInput)"
-          class="hover:bg-zinc-700 border-b border-neutral-500"
-        >
-          <td class="px-3 py-1">
-            {{ map.map_name }}
-          </td>
-          <td class="px-3 py-1 text-neutral-400">
-            {{ map.map_type }}
-          </td>
-          <td class="px-3 py-1 text-neutral-400">
-            {{ map.map_tier }}
-          </td>
-          <td class="px-3 py-1 text-neutral-400">
-            {{ map.map_notes }}
-          </td>
-          <td *ngIf="map.map_completed === 1; else project" class="px-3 py-1">
-            <span class="completed-badge">Completed</span>
-          </td>
-          <ng-template #project
-            ><td class="px-3 py-1">
-              <span class="project-badge">Project</span>
-            </td></ng-template
-          >
-          <td class="py-1">
-            <a
-              routerLink="/detail/{{ map.id }}"
-              class="text-blue-500 font-semibold hover:underline"
-              >Edit</a
-            >
-          </td>
-        </tr>
-      </ng-container>
-    </tbody>
-  </table>
+<!-- form modal -->
+<div *ngIf="showModal" class="fixed inset-0" id="my-modal">
+  <form
+    [formGroup]="mapForm"
+    (ngSubmit)="onSubmit()"
+    class="wrapper-animation mx-auto w-full max-w-lg rounded-lg border border-zinc-600 bg-zinc-900 p-6 text-neutral-100 shadow-md"
+  >
+    <div class="w-full">
+      <label class="mb-2 block font-bold text-neutral-300" for="mapName">
+        Map name
+      </label>
+      <input
+        id="mapName"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
+        type="text"
+        placeholder="Map name"
+        formControlName="map_name"
+      />
+    </div>
+    <div class="w-full sm:w-1/2">
+      <label class="mb-2 block font-bold text-neutral-200" for="mapStyle">
+        Map style
+      </label>
+      <select
+        id="mapStyle"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 text-neutral-400 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
+        formControlName="map_type"
+      >
+        <option class="text-neutral-300" selected value="linear">Linear</option>
+        <option class="text-neutral-300" value="stage">Stage</option>
+      </select>
+    </div>
+    <div class="w-full">
+      <label class="mb-2 block font-bold text-neutral-200" for="mapTier">
+        Map tier
+      </label>
+      <input
+        id="mapTier"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
+        type="number"
+        formControlName="map_tier"
+        placeholder="Map tier"
+      />
+    </div>
+    <div class="w-full">
+      <label class="mb-2 block font-bold text-neutral-200" for="notes">
+        Notes
+      </label>
+      <textarea
+        id="notes"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
+        placeholder="Map notes"
+        formControlName="map_notes"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <input
+        id="check"
+        class="mr-2"
+        type="checkbox"
+        formControlName="map_completed"
+      />
+      <label class="text-neutral-200" for="check">Mark map as completed</label>
+    </div>
+
+    <div class="relative flex items-center gap-3">
+      <input
+        [disabled]="!mapForm.valid"
+        id="submit-btn"
+        type="submit"
+        value="Submit"
+      />
+
+      <button
+        (click)="toggleFormModal()"
+        class="rounded border border-zinc-600 py-2 px-4 font-bold text-neutral-200"
+      >
+        Close
+      </button>
+      <div
+        class="error-message absolute left-52 flex items-center"
+        *ngIf="errormsg"
+      >
+        <fa-icon
+          [icon]="faExclamationTriangle"
+          class="pr-1 text-red-300"
+        ></fa-icon>
+        <p class="font-semibold text-red-300">{{ errormsg }}</p>
+      </div>
+      <div
+        class="success-message absolute left-52 flex items-center"
+        *ngIf="successmsg"
+      >
+        <fa-icon [icon]="faCheck" class="pr-1 text-green-300"></fa-icon>
+        <p class="font-semibold text-green-300">
+          {{ successmsg }}
+        </p>
+      </div>
+    </div>
+  </form>
 </div>
+
+<ng-template #noMaps>
+  <div class="flex justify-center text-neutral-300">
+    <div
+      class="rounded-lg border border-neutral-700 bg-neutral-800 p-8 shadow-lg"
+    >
+      <h2 class="mb-1 text-3xl">No maps</h2>
+      <p class="mb-2 text-neutral-400">
+        Start by adding new maps to your profile
+      </p>
+      <button
+        (click)="toggleFormModal()"
+        class="rounded bg-green-600 py-1 px-4 hover:bg-green-700"
+      >
+        <fa-icon [icon]="faPlus"></fa-icon> New
+      </button>
+    </div>
+  </div>
+</ng-template>

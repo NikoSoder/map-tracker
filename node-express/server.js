@@ -13,10 +13,39 @@ dotenv.config({ path: ".env" });
 const pool = mariadb.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  password: process.env.MARIADB_ROOT_PASSWORD,
+  database: process.env.MARIADB_DATABASE,
   connectionLimit: 5,
 });
+
+// create database and table
+(async () => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    console.log("Connected to MariaDB!");
+
+    await conn.query(
+      `CREATE DATABASE IF NOT EXISTS ${process.env.MARIADB_DATABASE}`
+    );
+    console.log("Database created");
+
+    await conn.query(`USE ${process.env.MARIADB_DATABASE}`);
+    console.log("Using database");
+
+    await conn.query(
+      `CREATE TABLE IF NOT EXISTS ${process.env.TABLE_NAME} (id INT NOT NULL AUTO_INCREMENT, map_name CHAR(40) NOT NULL,map_type CHAR(10) NOT NULL,map_tier INT NOT NULL,map_notes CHAR(30),map_completed BOOLEAN NOT NULL,PRIMARY KEY (id))`
+    );
+    console.log("Table created");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    if (conn) {
+      conn.release();
+      console.log("Connection closed");
+    }
+  }
+})();
 
 //get all data
 app.get("/", async (req, res) => {
@@ -61,12 +90,19 @@ app.post("/", async (req, res) => {
       `INSERT INTO ${process.env.TABLE_NAME} (map_name, map_type, map_tier, map_notes, map_completed) VALUES (?,?,?,?,?)`,
       [map_name, map_type, map_tier, map_notes, map_completed]
     );
+    /* const serializedResult = JSON.stringify(result, (key, value) =>
+      typeof value === "bigint" ? value.toString() : value
+    ); */
 
-    // const test = JSON.stringify(result, (key, value) =>
-    //   typeof value === "bigint" ? value.toString() + "n" : value
-    // );
-
-    res.status(200).json({ message: "data inserted" });
+    const newMap = {
+      id: Number(result.insertId),
+      map_name,
+      map_type,
+      map_tier,
+      map_notes,
+      map_completed,
+    };
+    res.status(200).json(newMap);
   } catch (e) {
     res.status(400).send(e.message);
   } finally {

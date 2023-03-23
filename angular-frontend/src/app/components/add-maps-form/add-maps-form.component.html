@@ -2,27 +2,27 @@
   <form
     [formGroup]="mapForm"
     (ngSubmit)="onSubmit()"
-    class="wrapper-animation sm:border-2 sm:border-neutral-600 text-neutral-100 p-4 w-full max-w-lg mx-auto rounded-lg sm:shadow"
+    class="wrapper-animation mx-auto w-full max-w-lg rounded-lg p-4 text-neutral-100 sm:border-2 sm:border-neutral-600 sm:shadow"
   >
     <div class="w-full">
-      <label class="block text-neutral-300 font-bold mb-2" for="mapName">
+      <label class="mb-2 block font-bold text-neutral-300" for="mapName">
         Map name
       </label>
       <input
         id="mapName"
-        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
+        class="mb-3 w-full rounded border border-neutral-500 p-2 hover:border-neutral-400 focus:border-neutral-300 focus:shadow focus:shadow-neutral-700 focus:outline-none"
         type="text"
         placeholder="Map name"
         formControlName="map_name"
       />
     </div>
     <div class="w-full sm:w-1/2">
-      <label class="block text-neutral-200 font-bold mb-2" for="mapStyle">
+      <label class="mb-2 block font-bold text-neutral-200" for="mapStyle">
         Map style
       </label>
       <select
         id="mapStyle"
-        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
+        class="mb-3 w-full rounded border border-neutral-500 p-2 hover:border-neutral-400 focus:border-neutral-300 focus:shadow focus:shadow-neutral-700 focus:outline-none"
         formControlName="map_type"
       >
         <option selected value="linear">Linear</option>
@@ -30,24 +30,24 @@
       </select>
     </div>
     <div class="w-full">
-      <label class="block text-neutral-200 font-bold mb-2" for="mapTier">
+      <label class="mb-2 block font-bold text-neutral-200" for="mapTier">
         Map tier
       </label>
       <input
         id="mapTier"
-        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
+        class="mb-3 w-full rounded border border-neutral-500 p-2 hover:border-neutral-400 focus:border-neutral-300 focus:shadow focus:shadow-neutral-700 focus:outline-none"
         type="number"
         formControlName="map_tier"
         placeholder="Map tier"
       />
     </div>
     <div class="w-full">
-      <label class="block text-neutral-200 font-bold mb-2" for="notes">
+      <label class="mb-2 block font-bold text-neutral-200" for="notes">
         Notes
       </label>
       <textarea
         id="notes"
-        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700"
+        class="mb-3 w-full rounded border border-neutral-500 p-2 hover:border-neutral-400 focus:border-neutral-300 focus:shadow focus:shadow-neutral-700 focus:outline-none"
         placeholder="Map notes"
         formControlName="map_notes"
       ></textarea>
@@ -76,16 +76,16 @@
       >
         <fa-icon
           [icon]="faExclamationTriangle"
-          class="text-red-300 pr-1"
+          class="pr-1 text-red-300"
         ></fa-icon>
-        <p class="text-red-300 font-semibold">{{ errormsg }}</p>
+        <p class="font-semibold text-red-300">{{ errormsg }}</p>
       </div>
       <div
         class="success-message absolute inset-y-0 left-28 flex items-center"
         *ngIf="successmsg"
       >
-        <fa-icon [icon]="faCheck" class="text-green-300 pr-1"></fa-icon>
-        <p class="text-green-300 font-semibold">
+        <fa-icon [icon]="faCheck" class="pr-1 text-green-300"></fa-icon>
+        <p class="font-semibold text-green-300">
           {{ successmsg }}
         </p>
       </div>

@@ -13,6 +13,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TableComponent } from './components/table/table.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { MapDetailComponent } from './components/map-detail/map-detail.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MapDetailComponent } from './components/map-detail/map-detail.component
     TableComponent,
     StatisticsComponent,
     MapDetailComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,52 +1,59 @@
-<div *ngIf="map" class="container mx-auto md:flex md:justify-center">
-  <div class="wrapper-animation px-2 md:w-3/5 lg:w-2/5 text-neutral-200">
-    <div class="bg-zinc-700 p-3 mb-3 rounded border-2 border-neutral-600">
-      <h2 class="text-2xl mb-2 text-neutral-100">Map details</h2>
-      <p class="mb-1">
-        Map name: <span>{{ map.map_name }}</span>
-      </p>
-      <p class="mb-1">
-        Map type: <span>{{ map.map_type }}</span>
-      </p>
-      <p class="mb-4">
-        Map tier: <span>{{ map.map_tier }}</span>
-      </p>
-      <button
-        class="bg-none border mr-3 py-1 px-3 rounded hover:underline font-semibold mb-3"
-        (click)="goBack()"
-      >
-        <fa-icon [icon]="faAngleLeft"></fa-icon>
-        Back
-      </button>
+<div *ngIf="map" class="container mx-auto flex justify-center p-2">
+  <div
+    class="wrapper-animation max-w-md grow rounded-lg border border-zinc-600 bg-zinc-900 p-6 shadow-md"
+  >
+    <div>
+      <!-- map name and back button -->
+      <div class="mb-4 flex justify-between">
+        <div>
+          <h4 class="text-3xl font-bold text-neutral-200">
+            {{ map.map_name }}
+          </h4>
+        </div>
+        <div>
+          <button
+            class="rounded border border-zinc-600 bg-none py-1 px-2 font-semibold hover:bg-zinc-700"
+            (click)="goBack()"
+          >
+            <fa-icon class="text-neutral-200" [icon]="faArrowLeft"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <ul class="mb-3 text-gray-400">
+        <li>map type: {{ map.map_type }}</li>
+        <li>map tier: {{ map.map_tier }}</li>
+      </ul>
       <button
         (click)="onDelete(map)"
-        class="text-red-300 hover:bg-red-100 hover:text-red-800 hover:border-red-200 border-red-300 border py-1 px-3 rounded font-semibold mr-3 mb-3"
+        class="mr-3 mb-2 rounded bg-red-500 py-1 px-3 text-sm text-neutral-200 hover:bg-red-600"
       >
-        <fa-icon [icon]="faTrash"></fa-icon> Delete map
+        <fa-icon [icon]="faTrash"></fa-icon> Delete
       </button>
       <button
         *ngIf="map.map_completed === 0"
         (click)="onCompleted(map)"
-        class="text-green-300 hover:bg-green-100 hover:text-green-800 hover:border-green-200 border-green-300 border py-1 px-3 rounded font-semibold mb-3"
+        class="mb-2 rounded border border-green-300 py-1 px-3 text-sm text-green-300 hover:border-green-200 hover:bg-green-300 hover:text-green-800"
       >
         <fa-icon [icon]="faCheckCircle"></fa-icon> Complete
       </button>
     </div>
-    <div class="bg-zinc-700 p-3 w-full rounded border-2 border-neutral-600">
-      <label class="block text-neutral-200 font-bold mb-2" for="notes">
-        Notes
+    <hr class="my-8 h-px border-0 bg-gray-500" />
+    <!-- update note -->
+    <div>
+      <label class="mb-2 block font-bold text-neutral-200" for="notes">
+        Update your notes
       </label>
       <textarea
         id="notes"
         #notes
         [value]="map.map_notes"
-        class="w-full border border-neutral-500 rounded mb-3 p-2 focus:outline-none focus:border-neutral-300 hover:border-neutral-400 focus:shadow focus:shadow-neutral-700 bg-zinc-700"
+        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 text-neutral-200 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
       ></textarea>
       <button
         (click)="updateNotes(map, notes.value)"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-3"
+        class="mb-2 rounded bg-blue-600 py-1 px-3 text-sm text-white hover:bg-blue-700"
       >
-        Update notes
+        Update
       </button>
     </div>
   </div>

@@ -1,16 +1,15 @@
-<nav class="flex flex-row justify-between items-center p-4">
-  <div>
-    <h1 class="text-3xl text-neutral-200">Map Tracker</h1>
+<nav
+  class="flex flex-col items-center px-7 py-4 sm:flex-row sm:justify-between"
+>
+  <div class="mb-2">
+    <a routerLink="/home">
+      <h1 class="text-3xl text-neutral-200">Map Tracker</h1>
+    </a>
   </div>
   <div>
-    <ul
-      class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:space-x-7 text-neutral-400 font-semibold"
-    >
+    <ul class="flex flex-row gap-5 font-semibold text-neutral-400">
       <li>
         <a routerLink="/dashboard" routerLinkActive="activebutton">Dashboard</a>
-      </li>
-      <li>
-        <a routerLink="/add-maps" routerLinkActive="activebutton">Add maps</a>
       </li>
       <li>
         <a routerLink="/statistics" routerLinkActive="activebutton"

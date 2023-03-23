@@ -4,9 +4,9 @@ import { Location } from '@angular/common';
 import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
 import {
-  faAngleLeft,
   faTrash,
   faCheckCircle,
+  faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -16,7 +16,7 @@ import {
 })
 export class MapDetailComponent implements OnInit {
   faTrash = faTrash;
-  faAngleLeft = faAngleLeft;
+  faArrowLeft = faArrowLeft;
   faCheckCircle = faCheckCircle;
   map?: Map;
   constructor(

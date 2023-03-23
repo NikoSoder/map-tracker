@@ -14,14 +14,65 @@
   max-height: 500px;
 }
 
-th {
-  @apply sticky top-0 text-neutral-800 bg-neutral-300;
+#submit-btn {
+  @apply rounded bg-blue-600 py-2 px-4 font-bold text-neutral-200 hover:bg-blue-700;
+  cursor: pointer;
 }
 
-.completed-badge {
-  @apply text-xs font-medium px-2.5 py-0.5 rounded-full bg-green-900 text-green-300;
+#submit-btn:disabled {
+  @apply cursor-not-allowed rounded bg-blue-500 py-2 px-4 font-bold text-neutral-200 opacity-50;
 }
 
-.project-badge {
-  @apply text-xs font-medium  px-2.5 py-0.5 rounded-full bg-yellow-900 text-yellow-300;
+/* Remove input type=number arrows */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.error-message {
+  animation: error-animation 600ms forwards;
+}
+
+.success-message {
+  animation: success-animation 600ms forwards;
+}
+
+@keyframes error-animation {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(10px);
+  }
+  40% {
+    transform: translate(-10px);
+  }
+  60% {
+    transform: translate(10px);
+  }
+  80% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes success-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
