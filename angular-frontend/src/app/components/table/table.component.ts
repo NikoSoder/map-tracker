@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
+import { isMapAlreadyAdded } from 'src/app/helpers/functions';
 import {
   faSearch,
   faSort,
@@ -89,13 +90,12 @@ export class TableComponent implements OnInit {
     this.successmsg = '';
     this.errormsg = '';
     const form = this.mapForm.value;
+    if (!form.map_name) {
+      return;
+    }
 
-    /* check if map is already added */
-    const isMapAlreadyAdded: boolean = this.maps.some(
-      (obj) => obj.map_name === form.map_name
-    );
-
-    if (isMapAlreadyAdded) {
+    const checkForMap = isMapAlreadyAdded(this.maps, form.map_name);
+    if (checkForMap) {
       this.errormsg = 'Map is already added';
       return;
     }
