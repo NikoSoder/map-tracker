@@ -5,6 +5,7 @@
 <div align="center">
 
 ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/NikoSoder/map-tracker/develop?style=flat-square) ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/NikoSoder/map-tracker/develop?style=flat-square)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/NikoSoder/map-tracker/main.yml?branch=develop&style=flat-square)
 
 </div>
 
