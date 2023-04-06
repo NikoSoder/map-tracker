@@ -31,6 +31,10 @@ $ npm install
 
 2.Create your own .env file in `node-express` folder. Check in `.env-sample` for a sample.
 
+## Open with docker
+
+Clone this repo and then do `docker-compose up --build`. When build is ready open port `80` and you should see the project.
+
 ## Technologies used
 
 - Angular
