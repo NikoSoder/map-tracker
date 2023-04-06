@@ -1,45 +1,23 @@
 <div
-  class="container mx-auto px-3"
   *ngIf="completedMaps.length || projectMaps.length; else noMaps"
+  class="wrapper-animation flex max-w-xs flex-col gap-5"
 >
-  <div class="wrapper-animation mx-auto max-w-4xl">
-    <div class="mb-4 rounded-lg border-2 border-neutral-600 p-4 text-center">
-      <h3 class="mb-2 text-2xl text-slate-200">Statistics</h3>
-      <p class="text-slate-300">Total maps done: {{ completedMaps.length }}</p>
-      <p class="text-slate-300">Number of projects: {{ projectMaps.length }}</p>
-    </div>
-
-    <div
-      class="flex flex-col items-center justify-around rounded-lg border-2 border-neutral-600 p-4 sm:flex-row"
+  <div class="rounded-lg border border-zinc-600 bg-zinc-800 p-6 shadow-md">
+    <h2 class="text-2xl font-medium text-neutral-300">Statistics</h2>
+    <p class="text-gray-400">Total maps done: {{ completedMaps.length }}</p>
+    <p class="text-gray-400">Number of projects: {{ projectMaps.length }}</p>
+  </div>
+  <div
+    class="rounded-lg border border-zinc-600 bg-zinc-800 p-6 shadow-md"
+    *ngIf="completedMaps.length"
+  >
+    <canvas
+      baseChart
+      [data]="doughnutChartData"
+      [options]="doughnutChartOptions"
+      [type]="'doughnut'"
     >
-      <div
-        class="barchart mb-5 max-w-md p-2 sm:mb-0 sm:max-w-xs"
-        *ngIf="completedMaps.length"
-      >
-        <p class="mb-3 text-center text-lg text-slate-200">
-          Completed maps by tiers
-        </p>
-        <canvas
-          baseChart
-          [data]="barChartData"
-          [options]="barChartOptions"
-          [type]="'bar'"
-        >
-        </canvas>
-      </div>
-      <div
-        class="doughnutchart max-w-md p-2 sm:max-w-xs"
-        *ngIf="completedMaps.length"
-      >
-        <canvas
-          baseChart
-          [data]="doughnutChartData"
-          [options]="doughnutChartOptions"
-          [type]="'doughnut'"
-        >
-        </canvas>
-      </div>
-    </div>
+    </canvas>
   </div>
 </div>
 

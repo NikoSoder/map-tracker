@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
 import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
-
-interface TiersHashmap {
-  [key: string]: number;
-}
-interface TierInfo {
-  tier: string;
-  count: number;
-}
+import { TierInfo, TiersHashmap } from 'src/app/types/stats.interface';
 
 @Component({
   selector: 'app-statistics',
@@ -19,36 +12,11 @@ interface TierInfo {
 export class StatisticsComponent implements OnInit {
   completedMaps: Map[] = [];
   projectMaps: Map[] = [];
-  tierData?: TierInfo[];
+  tierData: TierInfo[] = [];
 
   constructor(private apiService: ApiService) {}
 
-  // BAR CHART
-  barChartData: any;
-  barChartOptions: ChartConfiguration['options'] = {
-    responsive: true,
-    color: 'rgb(243, 244, 246)',
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: 'rgb(243, 244, 246)',
-        },
-      },
-      y: {
-        ticks: {
-          color: 'rgb(243, 244, 246)',
-        },
-      },
-    },
-  };
-
-  // DOUGHNUT CHART
-  doughnutChartData: any;
+  doughnutChartData: any = {};
   doughnutChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     color: 'rgb(243, 244, 246)',
@@ -65,50 +33,47 @@ export class StatisticsComponent implements OnInit {
 
   getData() {
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
-      console.log('All user maps', maps);
       this.completedMaps = maps.filter((map) => map.map_completed === 1);
       this.projectMaps = maps.filter((map) => map.map_completed === 0);
       this.splitMapsToTiers();
     });
   }
 
+  // count maps by tiers and create data for doughnut chart
   splitMapsToTiers() {
-    let counts: TiersHashmap = {};
+    const tierCount = this.countCompletedMapsTiers();
+    this.tierData = this.createTierData(tierCount);
+    this.createDoughnutChartData();
+  }
 
+  createDoughnutChartData() {
+    this.doughnutChartData = {
+      labels: this.tierData.map((map) => map.tier),
+      datasets: [
+        {
+          data: this.tierData.map((map) => map.count),
+          borderColor: '#313133',
+          color: 'white',
+        },
+      ],
+    };
+  }
+
+  createTierData(tierCount: TiersHashmap): TierInfo[] {
+    return Object.keys(tierCount).map((tier) => ({
+      tier: `Tier ${tier}`,
+      count: tierCount[tier],
+    }));
+  }
+
+  countCompletedMapsTiers(): TiersHashmap {
+    let counts: TiersHashmap = {};
     for (const map of this.completedMaps) {
       if (!counts[map.map_tier]) {
         counts[map.map_tier] = 0;
       }
       counts[map.map_tier] += 1;
     }
-
-    this.tierData = Object.keys(counts).map((tier) => ({
-      tier: `Tier ${tier}`,
-      count: counts[tier],
-    }));
-
-    this.barChartData = {
-      labels: this.tierData?.map((map) => map.tier),
-      datasets: [
-        {
-          data: this.tierData?.map((map) => map.count),
-          backgroundColor: '#0d6efd',
-          borderColor: 'none',
-          color: 'white',
-          hoverBackgroundColor: '#0b5ed7',
-        },
-      ],
-    };
-
-    this.doughnutChartData = {
-      labels: this.tierData?.map((map) => map.tier),
-      datasets: [
-        {
-          data: this.tierData?.map((map) => map.count),
-          borderColor: '#313133',
-          color: 'white',
-        },
-      ],
-    };
+    return counts;
   }
 }
