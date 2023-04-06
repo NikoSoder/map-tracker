@@ -14,6 +14,8 @@ import { TableComponent } from './components/table/table.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { MapDetailComponent } from './components/map-detail/map-detail.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
     StatisticsComponent,
     MapDetailComponent,
     LandingPageComponent,
+    FooterComponent,
+    FeatureCardsComponent,
   ],
   imports: [
     BrowserModule,
