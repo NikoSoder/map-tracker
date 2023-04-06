@@ -15,6 +15,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { MapDetailComponent } from './components/map-detail/map-detail.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FeatureCardsComponent } from './components/feature-cards/feature-cards.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MapDetailComponent,
     LandingPageComponent,
     FooterComponent,
+    FeatureCardsComponent,
   ],
   imports: [
     BrowserModule,
