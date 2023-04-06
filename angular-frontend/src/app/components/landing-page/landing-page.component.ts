@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+
 import * as AOS from 'aos';
 
 @Component({
@@ -10,8 +10,6 @@ import * as AOS from 'aos';
 })
 export class LandingPageComponent implements OnInit {
   faCheck = faCheck;
-  faGithub = faGithub;
-  faLinkedin = faLinkedin;
 
   constructor() {}
 
