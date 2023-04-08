@@ -5,7 +5,9 @@ import { Map } from 'src/app/types/map.interface';
 import {
   faCheck,
   faExclamationTriangle,
+  faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-maps-form',
@@ -15,9 +17,10 @@ import {
 export class AddMapsFormComponent implements OnInit {
   faExclamationTriangle = faExclamationTriangle;
   faCheck = faCheck;
+  faArrowLeft = faArrowLeft;
   errormsg = '';
   successmsg = '';
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private location: Location) {}
 
   ngOnInit(): void {}
 
@@ -33,6 +36,9 @@ export class AddMapsFormComponent implements OnInit {
   });
 
   onSubmit() {
+    if (!this.mapForm.value.map_name) {
+      return;
+    }
     this.successmsg = '';
     this.errormsg = '';
     const form = this.mapForm.value;
@@ -56,5 +62,9 @@ export class AddMapsFormComponent implements OnInit {
       map_notes: '',
       map_completed: false,
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

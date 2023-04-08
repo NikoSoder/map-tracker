@@ -13,9 +13,7 @@
 
 Map tracker for Counter-Strike surf mode. Track your completed maps and projects.
 
-## Demo video
-
-Project gif here
+<img src="./angular-frontend/src/assets/images/dashboard-new.png" alt="Dashboard picture" style="max-width: 500px">
 
 ## Installation
 

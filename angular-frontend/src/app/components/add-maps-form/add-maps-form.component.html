@@ -1,9 +1,17 @@
-<div class="container mx-auto">
+<div class="container mx-auto px-2">
   <form
     [formGroup]="mapForm"
     (ngSubmit)="onSubmit()"
-    class="wrapper-animation mx-auto w-full max-w-lg rounded-lg p-4 text-neutral-100 sm:border-2 sm:border-neutral-600 sm:shadow"
+    class="wrapper-animation relative mx-auto w-full max-w-lg rounded-lg border border-zinc-600 bg-zinc-800 p-6 text-neutral-100 shadow-md"
   >
+    <div class="absolute top-3 right-6">
+      <button
+        class="rounded border border-zinc-600 bg-none py-1 px-2 font-semibold hover:bg-zinc-700"
+        (click)="goBack()"
+      >
+        <fa-icon class="text-neutral-200" [icon]="faArrowLeft"></fa-icon>
+      </button>
+    </div>
     <div class="w-full">
       <label class="mb-2 block font-bold text-neutral-300" for="mapName">
         Map name

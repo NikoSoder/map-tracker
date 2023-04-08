@@ -4,7 +4,7 @@
       <h2 class="text-2xl font-medium text-neutral-300">Your maps</h2>
       <div class="text-neutral-200">
         <button
-          (click)="toggleFormModal()"
+          routerLink="/add"
           class="rounded bg-green-600 py-1 px-4 hover:bg-green-700"
         >
           <fa-icon [icon]="faPlus"></fa-icon> New
@@ -138,108 +138,6 @@
   </div>
 </div>
 
-<!-- form modal -->
-<div *ngIf="showModal" class="fixed inset-0" id="my-modal">
-  <form
-    [formGroup]="mapForm"
-    (ngSubmit)="onSubmit()"
-    class="wrapper-animation mx-auto w-full max-w-lg rounded-lg border border-zinc-600 bg-zinc-900 p-6 text-neutral-100 shadow-md"
-  >
-    <div class="w-full">
-      <label class="mb-2 block font-bold text-neutral-300" for="mapName">
-        Map name
-      </label>
-      <input
-        id="mapName"
-        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
-        type="text"
-        placeholder="Map name"
-        formControlName="map_name"
-      />
-    </div>
-    <div class="w-full sm:w-1/2">
-      <label class="mb-2 block font-bold text-neutral-200" for="mapStyle">
-        Map style
-      </label>
-      <select
-        id="mapStyle"
-        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 text-neutral-400 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
-        formControlName="map_type"
-      >
-        <option class="text-neutral-300" selected value="linear">Linear</option>
-        <option class="text-neutral-300" value="stage">Stage</option>
-      </select>
-    </div>
-    <div class="w-full">
-      <label class="mb-2 block font-bold text-neutral-200" for="mapTier">
-        Map tier
-      </label>
-      <input
-        id="mapTier"
-        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
-        type="number"
-        formControlName="map_tier"
-        placeholder="Map tier"
-      />
-    </div>
-    <div class="w-full">
-      <label class="mb-2 block font-bold text-neutral-200" for="notes">
-        Notes
-      </label>
-      <textarea
-        id="notes"
-        class="mb-3 w-full rounded border border-zinc-600 bg-zinc-800 p-2 focus:border-neutral-400 focus:shadow focus:shadow-neutral-700 focus:outline-none"
-        placeholder="Map notes"
-        formControlName="map_notes"
-      ></textarea>
-    </div>
-    <div class="mb-3">
-      <input
-        id="check"
-        class="mr-2"
-        type="checkbox"
-        formControlName="map_completed"
-      />
-      <label class="text-neutral-200" for="check">Mark map as completed</label>
-    </div>
-
-    <div class="relative flex items-center gap-3">
-      <input
-        [disabled]="!mapForm.valid"
-        id="submit-btn"
-        type="submit"
-        value="Submit"
-      />
-
-      <button
-        (click)="toggleFormModal()"
-        class="rounded border border-zinc-600 py-2 px-4 font-bold text-neutral-200"
-      >
-        Close
-      </button>
-      <div
-        class="error-message absolute left-52 flex items-center"
-        *ngIf="errormsg"
-      >
-        <fa-icon
-          [icon]="faExclamationTriangle"
-          class="pr-1 text-red-300"
-        ></fa-icon>
-        <p class="font-semibold text-red-300">{{ errormsg }}</p>
-      </div>
-      <div
-        class="success-message absolute left-52 flex items-center"
-        *ngIf="successmsg"
-      >
-        <fa-icon [icon]="faCheck" class="pr-1 text-green-300"></fa-icon>
-        <p class="font-semibold text-green-300">
-          {{ successmsg }}
-        </p>
-      </div>
-    </div>
-  </form>
-</div>
-
 <ng-template #noMaps>
   <div class="flex justify-center text-neutral-300">
     <div
@@ -250,7 +148,7 @@
         Start by adding new maps to your profile
       </p>
       <button
-        (click)="toggleFormModal()"
+        routerLink="/add"
         class="rounded bg-green-600 py-1 px-4 hover:bg-green-700"
       >
         <fa-icon [icon]="faPlus"></fa-icon> New

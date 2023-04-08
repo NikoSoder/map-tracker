@@ -51,6 +51,6 @@ describe('DashboardComponent', () => {
 
     spyOn(apiService, 'getAllMaps').and.returnValue(of(mockMaps));
     component.ngOnInit();
-    expect(component.userMaps).toEqual(mockMaps);
+    expect(component.allMaps).toEqual(mockMaps);
   });
 });
