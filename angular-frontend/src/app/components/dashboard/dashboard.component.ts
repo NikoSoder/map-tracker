@@ -8,13 +8,13 @@ import { Map } from 'src/app/types/map.interface';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  userMaps: Map[] = [];
+  allMaps: Map[] = [];
 
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.apiService.getAllMaps().subscribe((maps: Map[]) => {
-      this.userMaps = maps;
+      this.allMaps = maps;
     });
   }
 }

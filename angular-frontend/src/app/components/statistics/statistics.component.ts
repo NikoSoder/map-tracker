@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
-import { ApiService } from 'src/app/api.service';
 import { Map } from 'src/app/types/map.interface';
 import { TierInfo, TiersHashmap } from 'src/app/types/stats.interface';
 
@@ -10,11 +9,16 @@ import { TierInfo, TiersHashmap } from 'src/app/types/stats.interface';
   styleUrls: ['./statistics.component.css'],
 })
 export class StatisticsComponent implements OnInit {
-  completedMaps: Map[] = [];
-  projectMaps: Map[] = [];
+  @Input() maps: Map[];
+  completed: Map[];
+  projects: Map[];
   tierData: TierInfo[] = [];
 
-  constructor(private apiService: ApiService) {}
+  constructor() {
+    this.maps = [];
+    this.completed = [];
+    this.projects = [];
+  }
 
   doughnutChartData: any = {};
   doughnutChartOptions: ChartConfiguration['options'] = {
@@ -28,15 +32,9 @@ export class StatisticsComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.getData();
-  }
-
-  getData() {
-    this.apiService.getAllMaps().subscribe((maps: Map[]) => {
-      this.completedMaps = maps.filter((map) => map.map_completed === 1);
-      this.projectMaps = maps.filter((map) => map.map_completed === 0);
-      this.splitMapsToTiers();
-    });
+    this.completed = this.maps.filter((map) => map.map_completed === 1);
+    this.projects = this.maps.filter((map) => map.map_completed === 0);
+    this.splitMapsToTiers();
   }
 
   // count maps by tiers and create data for doughnut chart
@@ -68,7 +66,7 @@ export class StatisticsComponent implements OnInit {
 
   countCompletedMapsTiers(): TiersHashmap {
     let counts: TiersHashmap = {};
-    for (const map of this.completedMaps) {
+    for (const map of this.completed) {
       if (!counts[map.map_tier]) {
         counts[map.map_tier] = 0;
       }

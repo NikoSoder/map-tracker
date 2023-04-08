@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Map } from 'src/app/types/map.interface';
 import { faSearch, faSort, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +16,7 @@ export class TableComponent implements OnInit {
   faPlus = faPlus;
   @Input() maps: Map[];
 
-  constructor(private apiService: ApiService) {
+  constructor() {
     this.maps = [];
   }
 

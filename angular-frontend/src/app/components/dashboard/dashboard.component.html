@@ -1,10 +1,8 @@
-<div
-  class="wrapper-animation container mx-auto gap-5 px-2 lg:flex lg:justify-center"
->
+<div class="wrapper-animation container mx-auto gap-5 px-2 lg:flex">
   <div class="mb-5 basis-3/4">
-    <app-table [maps]="userMaps"> </app-table>
+    <app-table [maps]="allMaps"> </app-table>
   </div>
-  <div>
-    <app-statistics></app-statistics>
+  <div *ngIf="allMaps.length">
+    <app-statistics [maps]="allMaps"></app-statistics>
   </div>
 </div>
